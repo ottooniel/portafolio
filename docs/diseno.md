@@ -1,4 +1,4 @@
-# Diseño del portafolio de Ottoniel Menéndez (v3)
+# Diseño del portafolio de Ottoniel Menéndez (v4)
 
 Especificación visual para implementar. Los textos viven en `docs/contenido.md`; este archivo define cómo se ven. Lo que no esté aquí, se pregunta: no se improvisa.
 
@@ -9,6 +9,8 @@ Maqueta de referencia (solo para Ottoniel): https://claude.ai/artifact/NsQJgyMtq
 - Escritorio: la página completa (nav, hero, Sobre mí con Cómo trabajo, cuatro proyectos, Experiencia, Stack, Contacto y pie).
 - Móvil: la página completa, pero en Proyectos solo se dibujaron Echo y Portal 360; Este portafolio y Portal para agentes de campo siguen el mismo patrón.
 - Móvil con el menú abierto: tablero aparte.
+- Página 404: escritorio y móvil.
+- Estados del formulario de contacto (enviando, enviado, error): tablero aparte.
 
 ## Dirección de estilo
 
@@ -32,7 +34,8 @@ Editorial, plano y sobrio. La identidad (azul marino casi negro y video de circu
 | `accent` | `#1E90FF` | Etiquetas mono, números de sección, borde del nodo HubDB, hover |
 | `line` | `rgba(255,255,255,.10)` | Hairlines de sección y filas |
 | `line-strong` | `rgba(255,255,255,.22)` | Nodos de diagrama, botón circular |
-| `outline-num` | `rgba(255,255,255,.30)` | Trazo de los números grandes 01–04 |
+| `outline-num` | `rgba(255,255,255,.30)` | Trazo de los números grandes 01–04 y del 404 |
+| `danger` | `#ff7a7a` | Solo la etiqueta y la línea del estado de error del formulario (≈ 7.7:1 sobre `bg`) |
 
 El acento se cambia desde una sola variable CSS (`--accent`). Los demás colores se definen como variables en `globals.css` / `@theme` de Tailwind.
 
@@ -61,7 +64,7 @@ Escala (escritorio / móvil):
 | Etiquetas mono | 11 px, `.12em`–`.14em` | 11 px | 500 |
 | Número grande de proyecto | 72 px, solo trazo 1 px `outline-num` | 56 px | 600 |
 
-Las tecnologías mencionadas en la frase del hero y en Sobre mí van en color `text` dentro de texto `text-body` (énfasis por color, no por negrita).
+Énfasis por color, no por negrita: dentro de texto `text-body`, algunas palabras van en `text`. En la frase del hero: React, Node.js, MongoDB y MySQL. En Sobre mí: solo "NIU Solutions".
 
 ## Espaciado y forma
 
@@ -71,13 +74,22 @@ Las tecnologías mencionadas en la frase del hero y en Sobre mí van en color `t
 - Radios: botón 6 px, foto 6 px, nodos de diagrama 4 px, botón circular 50 %.
 - Cada sección abre con un rótulo mono `[ 0N ]  Nombre` (el número en `accent`, el texto en `text-muted`) y debajo el H2: `[ 01 ] Perfil` / Sobre mí, `[ 02 ] Trabajo seleccionado` / Proyectos, `[ 03 ] Trayectoria` / Experiencia, `[ 04 ] Herramientas` / Stack, `[ 05 ] Contacto` / el título de contacto de `contenido.md`.
 
+## Puntos de quiebre
+
+- < 768 px: navegación móvil (hamburguesa).
+- ≥ 1024 px: dos columnas en Sobre mí, Proyectos y Contacto. Debajo de 1024 px, una columna (medio o foto arriba).
+- Proyectos usa proporciones y no anchos fijos: medio ≈ 55 % y texto ≈ 45 %, con 72 px de separación (48 px entre 1024 y 1279 px).
+- Experiencia y Stack mantienen la columna de etiqueta de 240 px desde 1024 px; debajo, la etiqueta va arriba.
+
 ## Navegación
 
 - Barra superpuesta al hero, alto 80 px (móvil 64 px), con hairline inferior `rgba(255,255,255,.08)`.
 - Izquierda: el nombre "Ottoniel Menéndez" como texto (Space Grotesk 600, 18 px; móvil 17 px). Sin monograma, sin caja y sin raya.
 - Derecha (escritorio): Sobre mí, Proyectos, Experiencia, Stack, Contacto; Inter 14 px, peso 500, `text-muted`, hover `text`, separación 40 px.
 - Móvil (< 768 px): botón hamburguesa de 44 px (dos líneas de 1.5 px, `aria-label="Abrir menú"`, `aria-expanded`).
-- Menú abierto (maquetado): panel a pantalla completa con fondo `bg`, la misma barra arriba con la hamburguesa convertida en X (`aria-label="Cerrar menú"`). Los cinco enlaces en Space Grotesk 600 de 32 px, cada uno con su número mono `01`–`05` en `accent` y hairline entre filas. Abajo, el correo (16 px) y "GITHUB ↗ · LINKEDIN ↗" en mono 12 px `text-muted`. Se cierra con la X, con `Esc` y al elegir un enlace; el foco queda atrapado mientras está abierto.
+- Menú abierto (maquetado): panel a pantalla completa con fondo `bg`, la misma barra de 64 px arriba (hairline inferior) con la hamburguesa convertida en X (`aria-label="Cerrar menú"`).
+  - Lista: padding `32px 20px 0`. Cada fila: padding `20px 0`, hairline arriba (y abajo en la última), número mono 11 px en `accent` y texto en Space Grotesk 600 de 32 px con `line-height: 1`, separados 16 px y alineados a la línea base.
+  - Bloque inferior: padding `24px 20px 40px`, separación 16 px. Correo en Inter 500 de 16 px; debajo "GITHUB ↗" y "LINKEDIN ↗" en mono 12 px, tracking .08em, `text-muted`, separados 24 px. Se cierra con la X, con `Esc` y al elegir un enlace; el foco queda atrapado mientras está abierto.
 
 ## Hero
 
@@ -105,7 +117,7 @@ Las tecnologías mencionadas en la frase del hero y en Sobre mí van en color `t
 
 Cuatro filas editoriales apiladas, cada una separada por hairline y con 72 px de padding vertical. Orden: 01 Echo, 02 Este portafolio, 03 Portal 360, 04 Portal para agentes de campo.
 
-Estructura de cada fila (escritorio): dos columnas, medio a la izquierda (≈ 540 px, `flex-basis`) y texto a la derecha (≈ 400 px), separación 72 px. Móvil: una columna, medio arriba.
+Estructura de cada fila (≥ 1024 px): dos columnas, medio a la izquierda (≈ 55 %) y texto a la derecha (≈ 45 %), separación 72 px (48 px entre 1024 y 1279 px). Debajo de 1024 px: una columna, medio arriba.
 
 **Columna de texto, en orden:**
 1. Número grande `01`–`04` (solo trazo) alineado a la base con una etiqueta mono en `accent` (por ejemplo "Juego arcade · Build&Play de Open2", "Sitio web", "Caso de estudio" + debajo, en `text-muted`, "Proyecto privado de cliente, sin demo pública"). En hover de la fila, el trazo del número pasa a `accent` (transición 250 ms).
@@ -115,7 +127,7 @@ Estructura de cada fila (escritorio): dos columnas, medio a la izquierda (≈ 54
 
 **Columna de medio:**
 - Echo: el tráiler vertical (4:5) dentro del marco 16:10 con fondo `#000` y `object-fit: contain`. El fondo del juego es negro, así que las franjas laterales no se notan. `<video muted loop playsinline preload="none" poster="echo_poster.webp">` con `echo_preview.mp4`. Se reproduce solo mientras está en pantalla (IntersectionObserver) y se pausa al salir; con `prefers-reduced-motion: reduce` se queda en el póster. Sin controles ni sonido; el video es decorativo (`aria-hidden="true"`) porque el texto de la fila ya lo describe. En móvil, el marco pasa a 4:5 y el video ocupa todo el ancho.
-- Este portafolio: miniatura 16:10, radio 6, borde `line`, con `hero_poster.webp` y `object-position: right center` hasta tener la captura del sitio construido.
+- Este portafolio: miniatura 16:10, radio 6, borde `line`, con `hero_poster.webp` y `object-position: right center` hasta tener la captura del sitio construido. La captura final (fase 7) es el hero a 1440 px de ancho en 16:10, tomada de la vista previa de Vercel, en WebP.
 - En ambos, una etiqueta mono arriba a la izquierda sobre fondo `rgba(3,10,26,.85)`, radio 3, p. ej. "01 / ECHO".
 - Casos: caja con borde `line` y fondo `rgba(255,255,255,.02)` (único "contenedor" permitido) con el diagrama centrado, padding 56 px 48 px, alto mínimo 420 px, etiqueta superior "03 / PORTAL 360" y al pie "Diagrama simplificado, sin datos del cliente" en mono 10 px mayúsculas `text-muted`.
 
@@ -148,9 +160,9 @@ HTML y CSS, no imágenes (accesibles y editables).
 | `echo.webp` | Versión 16:10 del póster (1600×1000) para usos estáticos, como una futura imagen `og` del proyecto |
 | `cover.webp` | Respaldo para un proyecto nuevo sin captura |
 | `bg.webp` | Sin uso en esta versión; se conserva en el repo por si hace falta |
-| `og` (pendiente) | Imagen para redes: JPG de 1200×630 con su nombre y cargo, sin la palabra "Portafolio" |
+| `og` (fase 7) | Imagen para redes de 1200×630: fondo `hero_poster.webp`, nombre y cargo en Space Grotesk, sin la palabra "Portafolio". Generada con `opengraph-image` de Next si funciona con export estático; si no, un JPG en `public/` |
 
-Todo formato nuevo en WebP, salvo `og` (JPG). Pendiente: la captura del portafolio una vez construido.
+Todo formato nuevo en WebP, salvo `og`. Pendiente: la captura del portafolio una vez construido (fase 7).
 
 ## Experiencia (`[ 03 ] Trayectoria`, fondo `bg`)
 
@@ -170,9 +182,27 @@ Todo formato nuevo en WebP, salvo `og` (JPG). Pendiente: la captura del portafol
 - Escritorio en dos columnas (separación 96 px). Móvil: una columna con el formulario debajo.
 - Izquierda: rótulo, H2 con el título de `contenido.md` (48 px, máx. 520 px; móvil 34 px), el texto en `text-body` 18 px, el correo como enlace `mailto:` en Space Grotesk 500 de 26 px (móvil 21 px) con subrayado fino y, debajo, "GitHub ↗" y "LinkedIn ↗" como enlaces de texto.
 - Derecha: formulario sin cajas. Cada campo tiene su `label` mono 11 px arriba y solo una línea inferior `line-strong`; 52 px de alto (el mensaje, mínimo 128 px). Con foco, la línea pasa a `accent`. Botón primario igual al del hero: "Enviar mensaje →" (en móvil, a todo el ancho).
-- Los mensajes de éxito y error son texto en una región `role="status"` / `aria-live="polite"` debajo del botón, sin cajas ni íconos: éxito en `text`, error en `text` con el correo como enlace. No van en la maqueta.
+- Estados (maquetados en su tablero; textos en `contenido.md`):
+  - **Enviando:** los campos quedan de solo lectura al 60 % de opacidad y el formulario lleva `aria-busy="true"`. El botón queda deshabilitado (`cursor: progress`) con un loader en lugar de la flecha: anillo SVG de 16 px, trazo 1.75 px, pista `rgba(3,10,26,.2)` y arco `bg` que gira en 0.8 s lineal. Con `prefers-reduced-motion: reduce` el anillo no gira. El botón tiene `min-width: 196px` para que no cambie de ancho entre estados.
+  - **Enviado:** los campos se vacían. Debajo del botón, una región `role="status"` / `aria-live="polite"` con hairline arriba (`line`), etiqueta mono 11 px en `accent` y el mensaje en `text` 16 px.
+  - **Error:** los campos conservan lo escrito y el botón dice "Reintentar →". La misma región, con la línea superior en `rgba(255,122,122,.35)`, etiqueta en `danger` y el mensaje en `text` con el correo como enlace subrayado. El estado no depende solo del color: la etiqueta dice qué pasó.
+  - Sin cajas, sin íconos de check o cruz.
+- Hover: el botón circular del hero y los enlaces de contacto y pie siguen el mismo criterio que el resto: el borde o subrayado pasa a `accent` y el texto a `text`.
 - Sin botón de CV por ahora.
+
+## Página 404 (`src/app/not-found.tsx`)
+
+- Misma nav que el sitio (los enlaces apuntan a `/#seccion`) y un pie mínimo con el © bajo hairline.
+- Fondo: `hero_poster.webp` a pantalla completa al 55 % de opacidad (móvil 40 %, `object-position: 78% center`) con un degradado hacia `bg`: de izquierda a derecha en escritorio (`bg` hasta el 30 %), de arriba a abajo en móvil. Es imagen fija: sin video.
+- Contenido alineado a la izquierda y centrado en vertical (en móvil, anclado abajo), en este orden:
+  1. "404" decorativo (`aria-hidden`) en Space Grotesk 600, solo trazo `outline-num` como los números de proyecto: `clamp(140px, 17vw, 240px)`; móvil 132 px.
+  2. Rótulo mono `[ 404 ]  Ruta no encontrada` (número en `accent`).
+  3. H1 "Página no encontrada": Space Grotesk 700, `clamp(40px, 4.4vw, 64px)`; móvil 38 px.
+  4. Texto en `text-body` 18 px (móvil 16), máx. 480 px.
+  5. Línea de ruta en mono 13 px (móvil 12) dentro de un recuadro con borde `line` y radio 4: `GET` y `→ 404` en `text-muted`, la ruta en `text`. La ruta se lee en el cliente (`window.location.pathname`) y la línea no se muestra si no hay ruta. Cortar palabras largas (`overflow-wrap: anywhere`).
+  6. Botón primario "← Volver al inicio" y enlaces de texto "Ver proyectos" y "Contactar". En móvil el botón va a todo el ancho (52 px) y los enlaces debajo.
+- Con export estático, Next genera `out/404.html` y Vercel lo sirve en cualquier ruta inexistente.
 
 ## Pie
 
-- Hairline arriba y 32 px de padding. Escritorio: "© 2026 Ottoniel Menéndez" en mono 12 px `text-muted` a la izquierda; a la derecha GitHub, LinkedIn y "Volver arriba ↑" en Inter 14 px `text-muted` (hover `text`). Móvil: los enlaces arriba y el © debajo.
+- Hairline arriba y 32 px de padding. Escritorio: "© {año} Ottoniel Menéndez" (año calculado en el build) en mono 12 px `text-muted` a la izquierda; a la derecha GitHub, LinkedIn y "Volver arriba ↑" en Inter 14 px `text-muted` (hover `text`). Móvil: los enlaces arriba y el © debajo.

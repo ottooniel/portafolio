@@ -33,6 +33,10 @@ Sitio estático de una sola página: hero, sobre mí, proyectos, experiencia, st
 - Ramas: `feat/…`, `fix/…`, `docs/…`, `chore/…`.
 - Commits convencionales en español: `feat: agregar sección hero`, `fix: corregir contraste del botón`, `docs: …`, `chore: …`.
 - Trabaja por fases, una rama y un PR por fase. Al terminar una fase, detente y espera la revisión. No empieces la siguiente por tu cuenta.
+- Cada fase arranca desde `main` actualizada: `git switch main`, `git pull --prune` y luego la rama nueva.
+- Las correcciones dentro de una fase van en la misma rama. `fix/…` solo para errores encontrados después de mergear.
+- Si una fase cambia contenido, diseño o plan, actualiza `docs/` en el mismo PR. Al cerrar la fase, marca su avance en `docs/plan.md`.
+- No hagas merge de los PR: los revisa y mergea Ottoniel. Después del merge, borra la rama local con `git branch -D <rama>` (con squash merge, `-d` no la reconoce como mergeada).
 - Antes de cada commit corre `lint`, `typecheck` y `build`. No abras el PR si alguno falla.
 - En fases visuales, abre el sitio en el navegador (escritorio y móvil) y compáralo con `docs/diseno.md` antes de abrir el PR. Describe en el PR qué verificaste.
 - Descripción del PR: qué cambia, por qué y cómo se verificó.
