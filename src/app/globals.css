@@ -6,7 +6,7 @@
 }
 
 @theme inline {
-  /* ponytail: sin la paleta por defecto de Tailwind, solo existen los tokens del diseño */
+  /* Sin la paleta por defecto de Tailwind: solo existen los tokens del diseño. */
   --color-*: initial;
   --color-bg: #030a1a;
   --color-bg-alt: #050d22;
@@ -19,6 +19,7 @@
   --color-outline-num: rgba(255, 255, 255, 0.3);
   --color-danger: #ff7a7a;
   --color-white: #ffffff;
+  --color-black: #000000;
 
   --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;

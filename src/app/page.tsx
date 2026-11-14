@@ -1,4 +1,4 @@
-// ponytail: página provisional de la fase 0; la fase 2 la reemplaza con nav y hero.
+// Página provisional de la fase 0; la fase 2 la reemplaza con nav y hero.
 export default function Home() {
   return (
     <main className="site-container py-28">
