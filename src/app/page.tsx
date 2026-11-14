@@ -19,3 +19,5 @@ export default function Home() {
     </main>
   );
 }
+
+export const pruebaCi: number = "esto no es un número";
