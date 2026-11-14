@@ -9,7 +9,7 @@ Aprobado por Ottoniel el 2026-11-13. Si hay que cambiar el orden o el alcance de
 ## Avance
 
 - [x] Fase 0 — Base
-- [ ] Fase 1 — CI y Dependabot
+- [x] Fase 1 — CI y Dependabot
 - [ ] Fase 2 — Nav + hero
 - [ ] Fase 3 — Sobre mí + Cómo trabajo
 - [ ] Fase 4 — Proyectos
