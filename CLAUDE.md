@@ -15,7 +15,7 @@ Sitio estático de una sola página: hero, sobre mí, proyectos, experiencia, st
 
 - Next.js (App Router, `src/`) + TypeScript + Tailwind. Exportación estática (`output: 'export'`): sin API routes, sin servidor, y `images.unoptimized: true`.
 - Proyectos como MDX dentro del repo. Sin base de datos.
-- Formulario de contacto con servicio externo (Formspree o Resend). Las claves van en variables de entorno, nunca en el repo.
+- Formulario de contacto con Formspree: el sitio es estático y el navegador envía directo al servicio, sin servidor propio. El ID del formulario va en una variable de entorno (`NEXT_PUBLIC_FORMSPREE_ID`), nunca en el repo.
 - CI con GitHub Actions: lint, typecheck, build y Lighthouse. Dependabot para dependencias.
 - Despliegue en Vercel con vista previa por PR. El sitio lleva `noindex` hasta que Ottoniel decida hacerlo público.
 - Español primero. Versión en inglés en una segunda fase: no la implementes ahora.
@@ -24,7 +24,7 @@ Sitio estático de una sola página: hero, sobre mí, proyectos, experiencia, st
 
 - `npm run dev`: servidor de desarrollo
 - `npm run lint`
-- `npm run typecheck`: agrégalo en `package.json` como `tsc --noEmit` si no existe
+- `npm run typecheck`: `next typegen && tsc --noEmit` (`next typegen` genera los tipos de rutas, como `LayoutProps`, que `tsc` necesita en un checkout limpio)
 - `npm run build`
 
 ## Flujo de trabajo (obligatorio)
