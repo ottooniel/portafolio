@@ -36,6 +36,8 @@ Editorial, plano y sobrio. La identidad (azul marino casi negro y video de circu
 | `line-strong` | `rgba(255,255,255,.22)` | Nodos de diagrama, botón circular |
 | `outline-num` | `rgba(255,255,255,.30)` | Trazo de los números grandes 01–04 y del 404 |
 | `danger` | `#ff7a7a` | Solo la etiqueta y la línea del estado de error del formulario (≈ 7.7:1 sobre `bg`) |
+| `white` | `#ffffff` | Contorno de foco y hover del botón primario |
+| `black` | `#000000` | Fondo del marco del tráiler de Echo |
 
 El acento se cambia desde una sola variable CSS (`--accent`). Los demás colores se definen como variables en `globals.css` / `@theme` de Tailwind.
 

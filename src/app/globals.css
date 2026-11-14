@@ -1,26 +1,64 @@
 @import "tailwindcss";
 
+/* Tokens de docs/diseno.md. El acento se cambia solo aquí. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --accent: #1e90ff;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Sin la paleta por defecto de Tailwind: solo existen los tokens del diseño. */
+  --color-*: initial;
+  --color-bg: #030a1a;
+  --color-bg-alt: #050d22;
+  --color-text: #f0f2f6;
+  --color-text-body: #c3cad6;
+  --color-text-muted: #929baa;
+  --color-accent: var(--accent);
+  --color-line: rgba(255, 255, 255, 0.1);
+  --color-line-strong: rgba(255, 255, 255, 0.22);
+  --color-outline-num: rgba(255, 255, 255, 0.3);
+  --color-danger: #ff7a7a;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    background-color: var(--color-bg);
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text-body);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-white);
+    outline-offset: 4px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Contenedor: máx. 1200 px, padding lateral 20 px en móvil y 24 px desde 768 px. */
+@utility site-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 20px;
+
+  @media (width >= 48rem) {
+    padding-inline: 24px;
+  }
 }
