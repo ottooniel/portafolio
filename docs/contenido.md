@@ -23,6 +23,7 @@ Fuente única de textos del sitio. Idioma: español. Voz: primera persona, direc
 - Subtítulo: Full Stack Developer
 - Frase: Construyo aplicaciones web de punta a punta: interfaces en React, APIs en Node.js y datos en MongoDB y MySQL.
 - Botones: `Ver proyectos` · `Contactar`
+- Palabras en color `text` dentro de la frase: React, Node.js, MongoDB y MySQL.
 - Debajo: enlace a GitHub y "Guatemala". Las tecnologías ya van en la frase; no se repiten como etiquetas.
 
 ## Sobre mí
@@ -31,7 +32,12 @@ Soy desarrollador full stack en Guatemala y estudio Ingeniería en Sistemas de I
 
 Me gusta cuidar el producto completo: desde la pantalla que usa el agente hasta cómo el área de negocio puede cambiarla sin tocar código.
 
-Datos: Guatemala · UMG (en curso) · NIU Solutions desde dic. 2024
+Palabra en color `text` dentro de los párrafos: solo "NIU Solutions".
+
+Datos (etiqueta → valor, tal cual):
+- UBICACIÓN → Guatemala
+- ESTUDIOS → UMG (en curso)
+- TRABAJO → NIU Solutions desde dic. 2024
 
 ### Cómo trabajo
 
@@ -44,7 +50,9 @@ Regla: estos cuatro puntos tienen que ser verdad en el repo cuando el sitio se p
 
 ## Proyectos
 
-Cuatro tarjetas, en este orden: Echo, Este portafolio, Portal 360, Portal para agentes de campo.
+Cuatro filas, en este orden: Echo, Este portafolio, Portal 360, Portal para agentes de campo.
+
+Etiquetas sobre el medio: `01 / ECHO` · `02 / PORTAFOLIO` · `03 / PORTAL 360` · `04 / AGENTES DE CAMPO`.
 
 ### Echo
 
@@ -59,6 +67,8 @@ Juego de supervivencia en el navegador: cada ronda graba tu recorrido y lo convi
 - Repositorio: https://github.com/ottooniel/echo
 
 ### Este portafolio
+
+Sitio web
 
 Sitio estático con contenido en MDX, CI con lint, typecheck, build y Lighthouse, y vista previa por PR.
 
@@ -121,20 +131,34 @@ Caso de estudio · Proyecto privado de cliente, sin demo pública
 
 - Título: ¿Tienes un proyecto o una oportunidad?
 - Texto: Escríbeme y te respondo lo antes posible.
-- Formulario: Nombre · Correo · Mensaje · botón `Enviar mensaje`
-- Mensaje de éxito: ¡Gracias! Recibí tu mensaje y te responderé pronto.
-- Mensaje de error: No se pudo enviar. Inténtalo de nuevo o escríbeme a ottonielm64@gmail.com.
+- Formulario: Nombre · Correo · Mensaje · botón `Enviar mensaje →`
+- Validación: la nativa del navegador (campos `required`, correo con `type="email"`). Sin mensajes propios.
+- Enviando: el botón muestra un loader y el texto `Enviando` (sin flecha), queda deshabilitado y el formulario lleva `aria-busy="true"`.
+- Enviado: etiqueta `MENSAJE ENVIADO` y el texto "¡Gracias! Recibí tu mensaje y te responderé pronto." Los campos se vacían.
+- Error: etiqueta `NO SE ENVIÓ` y el texto "No se pudo enviar. Inténtalo de nuevo o escríbeme a ottonielm64@gmail.com." (el correo como enlace `mailto:`). Los campos conservan lo escrito y el botón dice `Reintentar →`.
 - Enlaces:
   - GitHub: https://github.com/ottooniel
   - LinkedIn: https://www.linkedin.com/in/ottoniel-men%C3%A9ndez/
   - Correo: ottonielm64@gmail.com
 - Sin CV descargable por ahora.
-- Pie: © 2026 Ottoniel Menéndez · GitHub · LinkedIn · Volver arriba ↑
+- Pie: © {año} Ottoniel Menéndez · GitHub · LinkedIn · Volver arriba ↑ (el año se calcula al hacer el build).
+
+## Página 404
+
+- Número decorativo: 404
+- Rótulo: `[ 404 ]  Ruta no encontrada`
+- H1: Página no encontrada
+- Texto: La página que buscas no existe o cambió de lugar.
+- Línea de ruta: `GET {ruta} → 404`, con la ruta que el visitante intentó abrir (si no se puede leer, la línea no se muestra).
+- Botón: `← Volver al inicio` (a `/`). Enlaces: `Ver proyectos` (a `/#proyectos`) · `Contactar` (a `/#contacto`).
+- Título de la pestaña: Página no encontrada | Ottoniel Menéndez
 
 ## Assets
 
 Optimizados en WebP: `bg.webp`, `cover.webp`, `hs_glasses.webp`, `hero_poster.webp`, `echo_poster.webp`, `echo.webp`. Videos: `hero_loop.mp4` (hero) y `echo_preview.mp4` (tráiler de Echo, 720×900, sin audio, 1,1 MB).
 `cover.webp` queda solo como respaldo para un proyecto nuevo sin captura.
-Pendiente: imagen para redes (`og`) en JPG de 1200×630, con su nombre y cargo.
+Imagen para redes (`og`, fase 7): 1200×630, fondo `hero_poster.webp`, "Ottoniel Menéndez" y "Full Stack Developer" en Space Grotesk, sin la palabra "Portafolio".
+Favicon: "OM" en Space Grotesk 600, color `text` sobre `bg` (`src/app/icon.svg`).
+URL del sitio: por ahora `*.vercel.app`, leída de `NEXT_PUBLIC_SITE_URL` para cambiarla cuando haya dominio.
 
 Colores y tipografía: ver `docs/diseno.md`.
