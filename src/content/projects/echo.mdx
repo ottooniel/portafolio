@@ -1,0 +1,20 @@
+export const meta = {
+  number: "01",
+  title: "Echo",
+  mediaLabel: "01 / ECHO",
+  kind: "public",
+  tag: "Juego arcade · Build&Play de Open2",
+  media: { type: "trailer" },
+  architecture: [
+    "Bucle de juego con paso fijo a 60 Hz",
+    "render en Canvas 2D",
+    "sonido generado con Web Audio",
+  ],
+  stack: ["JavaScript", "Canvas 2D", "Web Audio"],
+  links: [
+    { label: "Jugar", href: "https://ottooniel.github.io/echo/" },
+    { label: "Repositorio", href: "https://github.com/ottooniel/echo" },
+  ],
+};
+
+Juego de supervivencia en el navegador: cada ronda graba tu recorrido y lo convierte en un eco que te persigue en la siguiente. Entero en 32 KB, sin librerías ni assets, con simulación determinista a 60 Hz.

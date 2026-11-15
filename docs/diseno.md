@@ -157,6 +157,19 @@ Estructura de cada fila (≥ 1024 px): dos columnas, medio a la izquierda (≈ 5
 - En ambos, una etiqueta mono arriba a la izquierda sobre fondo `rgba(3,10,26,.85)`, radio 3, p. ej. "01 / ECHO".
 - Casos: caja con borde `line` y fondo `rgba(255,255,255,.02)` (único "contenedor" permitido) con el diagrama centrado, padding 56 px 48 px, alto mínimo 420 px, etiqueta superior "03 / PORTAL 360" y al pie "Diagrama simplificado, sin datos del cliente" en mono 10 px mayúsculas `text-muted`.
 
+**Medidas de las filas (escritorio / móvil):**
+- Fila: padding vertical 72 / 48 px. Separación entre el medio y el texto por debajo de 1024 px: 48 / 18 px.
+- Columna de texto: todos los bloques (número + etiqueta, H3, descripción o lista, enlaces o stack) separados 20 / 18 px, sin márgenes distintos entre ellos.
+- Número grande 72 / 56 px; separación con la etiqueta 20 / 16 px, con 6 px de margen superior en móvil. Etiqueta mono 11 px, `line-height: 1.5`, tracking .12em. Debajo, la nota "Proyecto privado de cliente…" en `text-muted`.
+- H3: 36 / 30 px, `line-height: 1.05`, tracking −.03em.
+- Descripción: 17 / 16 px, `line-height: 1.65`, `text-body`.
+- Lista de definiciones: hairline arriba con padding superior de 20 / 18 px. Públicos: apiladas con 20 / 18 px entre ellas. Casos de estudio: dos columnas desde 640 px (separación 24 px vertical, 28 px horizontal); en móvil, una sola columna con 20 px entre filas. Etiquetas con tracking .14em; valores 15 px (16 px en "Decisión clave"); "Stack" de los públicos 16 / 15 px.
+- Enlaces: separación 28 / 24 px, con 4 px extra arriba en escritorio.
+- Línea de stack de los casos: mono 12 px, `line-height: 1.7`.
+- Etiqueta sobre el medio (insignia): arriba a la izquierda a 14 px, padding 5 × 10 px, radio 3, fondo `rgba(3,10,26,.85)`, mono 11 px, tracking .1em, color `text-body` (no `text-muted`). Los diagramas llevan la misma insignia.
+- Caja del diagrama: radio 6, borde `line`, fondo `rgba(255,255,255,.02)`. Escritorio: padding 56 × 48 px, alto mínimo 420 px, diagrama centrado, nota al pie posicionada a 48 px del borde izquierdo y 16 px del inferior, mono 10 px, tracking .12em. Móvil: padding 40 × 16 px arriba y 44 px abajo, nodos con padding 12 × 6 px, nota a 16 px del borde izquierdo y 14 px del inferior, mono 9 px, tracking .1em. El texto de los nodos va en `text`.
+- Mayúsculas: el texto de cada valor empieza con mayúscula en el propio contenido (no se resuelve con CSS). Las piezas de "Arquitectura" y "Stack" solo llevan mayúscula en la primera pieza de la línea, salvo nombres propios ("Funciones serverless" abre su línea de stack; en "Arquitectura" solo la primera pieza).
+
 ### Diagramas
 HTML y CSS, no imágenes (accesibles y editables).
 
