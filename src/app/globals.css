@@ -43,6 +43,29 @@
     outline: 2px solid var(--color-white);
     outline-offset: 4px;
   }
+
+  /* Las anclas quedan debajo de la barra fija (80 px, móvil 64 px). */
+  [id] {
+    scroll-margin-top: 64px;
+
+    @media (width >= 48rem) {
+      scroll-margin-top: 80px;
+    }
+  }
+
+  /* Con el menú móvil abierto, la página de atrás no se desplaza. */
+  html:has(dialog[open]) {
+    overflow: hidden;
+  }
+}
+
+/* Barra sobre el hero (lo marca NavBrand). Solo con JavaScript: sin él, el nombre y el fondo quedan visibles. */
+@custom-variant over-hero {
+  @media (scripting: enabled) {
+    &:where([data-over-hero], [data-over-hero] *) {
+      @slot;
+    }
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
