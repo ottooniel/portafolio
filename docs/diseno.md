@@ -1,4 +1,4 @@
-# Diseño del portafolio de Ottoniel Menéndez (v4)
+# Diseño del portafolio de Ottoniel Menéndez (v5)
 
 Especificación visual para implementar. Los textos viven en `docs/contenido.md`; este archivo define cómo se ven. Lo que no esté aquí, se pregunta: no se improvisa.
 
@@ -85,10 +85,18 @@ Escala (escritorio / móvil):
 
 ## Navegación
 
-- Barra superpuesta al hero, alto 80 px (móvil 64 px), con hairline inferior `rgba(255,255,255,.08)`.
-- Izquierda: el nombre "Ottoniel Menéndez" como texto (Space Grotesk 600, 18 px; móvil 17 px). Sin monograma, sin caja y sin raya.
+- Barra fija, superpuesta al hero al cargar, alto 80 px (móvil 64 px), con hairline inferior `rgba(255,255,255,.08)`.
+- Izquierda: el nombre "Ottoniel Menéndez" como texto (Space Grotesk 600, 18 px; móvil 17 px), enlace a `/`. Sin monograma, sin caja y sin raya. **Aparece solo cuando el hero sale de la pantalla**, para no repetir el H1 (ver "Comportamiento de la barra").
 - Derecha (escritorio): Sobre mí, Proyectos, Experiencia, Stack, Contacto; Inter 14 px, peso 500, `text-muted`, hover `text`, separación 40 px.
 - Móvil (< 768 px): botón hamburguesa de 44 px (dos líneas de 1.5 px, `aria-label="Abrir menú"`, `aria-expanded`).
+- Comportamiento de la barra (la maqueta muestra solo el estado inicial, sobre el hero):
+  - La barra es `position: fixed` arriba, ancho completo, z-index sobre el contenido. Al cargar es transparente, con el hairline inferior, y el nombre está oculto: solo se ven los enlaces (a la derecha) o la hamburguesa.
+  - Cuando el hero sale de la pantalla (`IntersectionObserver` sobre el hero), la barra pasa a fondo `bg` sólido, mantiene el hairline y el nombre aparece a la izquierda con un fundido de 200 ms. Al volver al hero, se invierte. Con `prefers-reduced-motion: reduce` el cambio es inmediato.
+  - Oculto significa `visibility: hidden` (no recibe foco ni lo lee un lector de pantalla); el espacio se conserva para que los enlaces no se muevan.
+  - Sin JavaScript, el nombre queda visible y la barra con fondo `bg`.
+  - Cada ancla (`#sobre-mi`, etc.) lleva `scroll-margin-top` igual al alto de la barra (80 px, móvil 64 px) para que el título de la sección no quede tapado.
+  - En la 404 no hay hero: el nombre se muestra siempre y la barra va con fondo `bg`.
+  - El menú móvil abierto es un panel aparte que cubre la página: su barra muestra siempre el nombre (el H1 queda tapado, así que no hay repetición).
 - Menú abierto (maquetado): panel a pantalla completa con fondo `bg`, la misma barra de 64 px arriba (hairline inferior) con la hamburguesa convertida en X (`aria-label="Cerrar menú"`).
   - Lista: padding `32px 20px 0`. Cada fila: padding `20px 0`, hairline arriba (y abajo en la última), número mono 11 px en `accent` y texto en Space Grotesk 600 de 32 px con `line-height: 1`, separados 16 px y alineados a la línea base.
   - Bloque inferior: padding `24px 20px 40px`, separación 16 px. Correo en Inter 500 de 16 px; debajo "GITHUB ↗" y "LINKEDIN ↗" en mono 12 px, tracking .08em, `text-muted`, separados 24 px. Se cierra con la X, con `Esc` y al elegir un enlace; el foco queda atrapado mientras está abierto.

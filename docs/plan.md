@@ -10,7 +10,7 @@ Aprobado por Ottoniel el 2026-11-13. Si hay que cambiar el orden o el alcance de
 
 - [x] Fase 0 — Base
 - [x] Fase 1 — CI y Dependabot
-- [ ] Fase 2 — Nav + hero
+- [x] Fase 2 — Nav + hero
 - [ ] Fase 3 — Sobre mí + Cómo trabajo
 - [ ] Fase 4 — Proyectos
 - [ ] Fase 5 — Experiencia + Stack
@@ -80,18 +80,24 @@ Razón: `CLAUDE.md` exige "vista previa por PR" y revisión visual en cada fase;
 ## Fase 2 — Nav + hero
 
 - **Objetivo:** primera pantalla completa, con menú móvil.
-- **Entra:** barra superpuesta (80/64 px), enlaces de ancla, hamburguesa y menú a pantalla completa; hero con video, póster, capas de legibilidad, H1 en dos líneas, subtítulo, frase con tecnologías en `text`, botones y fila GitHub + "Guatemala". Anclas `#sobre-mi`, `#proyectos`, `#experiencia`, `#stack`, `#contacto` (las secciones destino llegan en fases siguientes).
+- **Entra:** barra fija superpuesta (80/64 px) cuyo nombre aparece solo cuando el hero sale de la pantalla (`diseno.md` v5 → "Comportamiento de la barra"), enlaces de ancla, hamburguesa y menú a pantalla completa; hero con video, póster, capas de legibilidad, H1 en dos líneas, subtítulo, frase con tecnologías en `text`, botones y fila GitHub + "Guatemala". Anclas `#sobre-mi`, `#proyectos`, `#experiencia`, `#stack`, `#contacto` (las secciones destino llegan en fases siguientes).
 - **No entra:** el contenido de las secciones, pie.
 - **Rama / PR:** `feat/nav-y-hero` · `feat: agregar navegación y hero`
 - **Archivos:**
   - `src/content/site.ts` (nuevo, crece por fase): nav, hero, enlaces sociales.
   - `src/components/Nav.tsx` (server) y `MobileMenu.tsx` (`"use client"`): menú sobre `<dialog>` nativo con `showModal()` — da atrapado de foco, `Esc` y devolución del foco sin librería ni código propio; solo se añade cerrar al elegir enlace y sincronizar `aria-expanded` / `aria-label`.
+  - `src/components/NavBrand.tsx` (`"use client"`, pequeño): un `IntersectionObserver` sobre el hero que marca la barra como "sobre el hero" (nombre oculto, fondo transparente). Sin hero (404) no marca nada y el nombre queda visible.
   - `src/components/Hero.tsx`, `Button.tsx` (primario, reutilizado en contacto), `TextLink.tsx` (subrayado fino, variante con ↗).
   - `src/app/page.tsx`.
 - **Criterios de aceptación:**
   - Un solo `h1` ("Ottoniel" / "Menéndez" en dos líneas), tamaños de la tabla de escala en 1440 y 390.
   - En la frase, solo React, Node.js, MongoDB y MySQL van en `text`.
   - Los enlaces de la nav usan `/#seccion` (sirven igual en la home y en la 404 de la fase 7).
+  - Barra `position: fixed`. Sobre el hero: fondo transparente con hairline y el nombre oculto con `visibility: hidden` (conserva su espacio, no recibe foco con Tab ni lo lee un lector de pantalla). Al salir el hero de la pantalla: fondo `bg` sólido y el nombre aparece con fundido de 200 ms (inmediato con `prefers-reduced-motion: reduce`); al volver, se invierte.
+  - Sin JavaScript, el nombre queda visible y la barra con fondo `bg`.
+  - Las anclas llevan `scroll-margin-top` igual al alto de la barra: 80 px (móvil 64 px).
+  - La barra del menú móvil abierto muestra siempre el nombre.
+  - La 404 de la fase 7 muestra el nombre siempre (no hay hero que observar).
   - Menú abierto con las medidas de `diseno.md` → Navegación (barra de 64 px, padding de lista, filas y bloque inferior).
   - Hover del botón circular: borde a `accent`.
   - `<video muted autoplay loop playsinline poster="/hero_poster.webp">`; `object-position: right center` en escritorio y `78% center` en móvil; con `prefers-reduced-motion: reduce` solo se ve el póster y el video no se reproduce.
@@ -100,7 +106,7 @@ Razón: `CLAUDE.md` exige "vista previa por PR" y revisión visual en cada fase;
   - < 768 px: hamburguesa de 44 px con `aria-label="Abrir menú"` y `aria-expanded`; abierto muestra 5 enlaces numerados 01–05, correo y "GITHUB ↗ · LINKEDIN ↗"; se cierra con X, `Esc` y al elegir enlace; el foco no sale del panel y vuelve a la hamburguesa al cerrar.
   - ≥ 768 px: cinco enlaces `text-muted` → hover `text`, sin hamburguesa.
   - Sin chips de tecnologías; ningún color suelto.
-- **Verificación:** comandos comunes; navegador a 1440 y 390; recorrido completo con Tab/Shift+Tab/Enter/Esc; DevTools → Rendering → emular `prefers-reduced-motion`; revisar que el video no bloquea el LCP (póster visible de inmediato); Lighthouse del CI ≥ 90.
+- **Verificación:** comandos comunes; navegador a 1440 y 390 (barra transparente sin nombre sobre el hero; nombre y fondo sólido al bajar; con Tab el nombre oculto no recibe foco); recorrido completo con Tab/Shift+Tab/Enter/Esc; DevTools → Rendering → emular `prefers-reduced-motion`; revisar que el video no bloquea el LCP (póster visible de inmediato); Lighthouse del CI ≥ 90.
 
 ## Fase 3 — Sobre mí + Cómo trabajo
 
@@ -182,7 +188,7 @@ Razón: `CLAUDE.md` exige "vista previa por PR" y revisión visual en cada fase;
 - **Imagen og:** primero `src/app/opengraph-image.tsx` (generada en el build). Si no funciona con `output: 'export'`, un JPG 1200×630 estático. Se decide con el build y se anota en el PR.
 - **Archivos:** `src/app/layout.tsx`, `src/app/not-found.tsx`, `src/components/NotFoundPath.tsx` (`"use client"`: lee `window.location.pathname`), `src/app/opengraph-image.tsx` (o el JPG), `public/portafolio.webp`, `src/content/projects/portafolio.mdx`, `src/content/site.ts` (textos de la 404), `.env.example` (`NEXT_PUBLIC_SITE_URL=`), ajustes puntuales en componentes; `docs/diseno.md` y `docs/contenido.md` (quitar los "pendiente" ya resueltos).
 - **Criterios de aceptación:**
-  - `out/404.html` existe: misma nav, pie mínimo, un solo `h1` "Página no encontrada", título de pestaña propio, "404" decorativo solo trazo con `aria-hidden`, fondo fijo `hero_poster.webp` (sin video) con su degradado, botón "← Volver al inicio" a `/` y enlaces a `/#proyectos` y `/#contacto`. La línea `GET {ruta} → 404` aparece solo cuando hay ruta y no desborda con rutas largas. Revisada a 1440 y 390 (botón a todo el ancho en móvil).
+  - `out/404.html` existe: misma nav (con el nombre siempre visible y fondo `bg`), pie mínimo, un solo `h1` "Página no encontrada", título de pestaña propio, "404" decorativo solo trazo con `aria-hidden`, fondo fijo `hero_poster.webp` (sin video) con su degradado, botón "← Volver al inicio" a `/` y enlaces a `/#proyectos` y `/#contacto`. La línea `GET {ruta} → 404` aparece solo cuando hay ruta y no desborda con rutas largas. Revisada a 1440 y 390 (botón a todo el ancho en móvil).
   - `out/index.html` con `og:title`, `og:description`, `og:image` (URL absoluta), `twitter:card=summary_large_image` y sigue con `noindex`.
   - No hay `robots.txt` con `Disallow` (bloquearía que los buscadores lean el `noindex`).
   - Lighthouse ≥ 90 en las cuatro categorías en el CI; cero fallos automáticos de accesibilidad.
@@ -211,6 +217,8 @@ Razón: `CLAUDE.md` exige "vista previa por PR" y revisión visual en cada fase;
 ## Decisiones tomadas
 
 Las 21 dudas del plan inicial quedaron resueltas por Ottoniel el 2026-11-13 y están incorporadas en `contenido.md`, `diseno.md` (v4) y en las fases de arriba.
+
+- **Barra fija (`diseno.md` v5, 2026-11-15):** el nombre de la barra aparece solo cuando el hero sale de la pantalla. Se incorpora a la fase 2 (`NavBrand.tsx`) y a la 404 de la fase 7.
 
 - **Lighthouse:** se omite solo `is-crawlable` mientras dure el `noindex`. Al quitar el `noindex`, se quita también esa omisión.
 - **Formulario:** Formspree. Ottoniel crea la cuenta y el formulario antes de la fase 6.
