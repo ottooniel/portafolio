@@ -85,3 +85,14 @@
     padding-inline: 24px;
   }
 }
+
+/* Números grandes solo trazo (proyectos, 404). Dentro de una fila (.group), el trazo pasa a `accent` en hover. */
+@utility text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--color-outline-num);
+  transition: -webkit-text-stroke-color 250ms;
+
+  :where(.group):hover & {
+    -webkit-text-stroke-color: var(--color-accent);
+  }
+}

@@ -12,7 +12,7 @@ Aprobado por Ottoniel el 2026-11-13. Si hay que cambiar el orden o el alcance de
 - [x] Fase 1 — CI y Dependabot
 - [x] Fase 2 — Nav + hero
 - [x] Fase 3 — Sobre mí + Cómo trabajo
-- [ ] Fase 4 — Proyectos
+- [x] Fase 4 — Proyectos
 - [ ] Fase 5 — Experiencia + Stack
 - [ ] Fase 6 — Contacto + pie
 - [ ] Fase 7 — SEO, accesibilidad, og, 404 y pulido
@@ -133,7 +133,7 @@ Razón: `CLAUDE.md` exige "vista previa por PR" y revisión visual en cada fase;
 - **Archivos:**
   - `next.config.ts` (envolver con `@next/mdx`, sin plugins de remark: los metadatos van como `export const meta` en cada MDX, así no hacen falta dependencias de frontmatter), `mdx-components.tsx`.
   - `src/content/projects/{echo,portafolio,portal-360,portal-campo}.mdx` + `index.ts` (orden y tipo `ProjectMeta`).
-  - `src/components/Projects.tsx`, `ProjectRow.tsx`, `EchoTrailer.tsx` (`"use client"`: IntersectionObserver + `matchMedia`), `FlowDiagram.tsx` (un componente, dos usos, datos por props).
+  - `src/components/Projects.tsx`, `ProjectRow.tsx`, `EchoTrailer.tsx` (`"use client"`: IntersectionObserver + `matchMedia`), `FlowDiagram.tsx` (un componente, dos usos, datos por props), `Fact.tsx` (fila de la lista de definiciones, usada desde el MDX de los casos); `src/mdx.d.ts` (tipo del `meta` exportado por cada MDX).
 - **Criterios de aceptación:**
   - Orden 01 Echo, 02 Este portafolio, 03 Portal 360, 04 Portal para agentes de campo; cada fila es un `<article>` con `h3`, hairline y 72 px de padding.
   - Desde 1024 px: medio ≈ 55 % a la izquierda y texto ≈ 45 % a la derecha, separación 72 px (48 px entre 1024 y 1279 px). Debajo: una columna, medio arriba.
