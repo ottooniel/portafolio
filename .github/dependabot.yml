@@ -10,6 +10,15 @@ updates:
       # Menores y parches juntos en un PR; las versiones mayores van por separado.
       npm-menores:
         update-types: [minor, patch]
+    # Mayores de herramientas se suben a mano: TypeScript 7 rompió el CI (PR #7)
+    # y @types/node debe coincidir con la versión de Node de .nvmrc.
+    ignore:
+      - dependency-name: typescript
+        update-types: [version-update:semver-major]
+      - dependency-name: eslint
+        update-types: [version-update:semver-major]
+      - dependency-name: "@types/node"
+        update-types: [version-update:semver-major]
 
   - package-ecosystem: github-actions
     directory: /
