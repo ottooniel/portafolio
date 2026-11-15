@@ -60,7 +60,7 @@ Juego arcade · Build&Play de Open2
 
 Juego de supervivencia en el navegador: cada ronda graba tu recorrido y lo convierte en un eco que te persigue en la siguiente. Entero en 32 KB, sin librerías ni assets, con simulación determinista a 60 Hz.
 
-- Arquitectura: bucle de juego con paso fijo a 60 Hz · render en Canvas 2D · sonido generado con Web Audio
+- Arquitectura: Bucle de juego con paso fijo a 60 Hz · render en Canvas 2D · sonido generado con Web Audio
 - Stack: JavaScript, Canvas 2D, Web Audio
 - Medio: tráiler del juego en bucle, sin sonido (`echo_preview.mp4`, póster `echo_poster.webp`). El tráiler confirma: index.html de 30.380 bytes y "hasta el sonido es código".
 - Jugar: https://ottooniel.github.io/echo/
@@ -81,22 +81,22 @@ Sitio estático con contenido en MDX, CI con lint, typecheck, build y Lighthouse
 
 Caso de estudio · Proyecto privado de cliente, sin demo pública
 
-- Contexto: portal de atención al cliente para el sector financiero. Los agentes ven toda la información del cliente en una sola pantalla y gestionan sus tickets, como parte de la migración de un sistema anterior a HubSpot.
-- Mi rol: desarrollé la mayor parte, del frontend a la integración con funciones serverless de HubSpot.
-- Qué construí: búsqueda de clientes, ficha del cliente y creación guiada de tickets en 3 pasos con seguimiento de gestiones.
-- Decisión clave: formularios dinámicos configurados desde tablas HubDB, para que el área de negocio cambie razones, asuntos y campos sin tocar código.
-- Resultado: los usuarios describieron la experiencia como fluida e intuitiva.
-- Stack: HubSpot CMS, HubL, JavaScript, funciones serverless, HubDB
+- Contexto: Portal de atención al cliente para el sector financiero. Los agentes ven toda la información del cliente en una sola pantalla y gestionan sus tickets, como parte de la migración de un sistema anterior a HubSpot.
+- Mi rol: Desarrollé la mayor parte, del frontend a la integración con funciones serverless de HubSpot.
+- Qué construí: Búsqueda de clientes, ficha del cliente y creación guiada de tickets en 3 pasos con seguimiento de gestiones.
+- Decisión clave: Formularios dinámicos configurados desde tablas HubDB, para que el área de negocio cambie razones, asuntos y campos sin tocar código.
+- Resultado: Los usuarios describieron la experiencia como fluida e intuitiva.
+- Stack: HubSpot CMS, HubL, JavaScript, Funciones serverless, HubDB
 - Visual: diagrama propio simplificado, sin datos ni marca del cliente.
 
 ### Portal para agentes de campo
 
 Caso de estudio · Proyecto privado de cliente, sin demo pública
 
-- Contexto: portal responsive de ventas y cobranza en campo.
-- Mi rol: desarrollé gran parte del portal.
-- Qué construí: agenda, planificación de visitas, formularios de visita y cobranza, cotizador de productos de crédito y administración de usuarios y roles.
-- Decisión clave: roles y permisos (vendedor, supervisor, administrador) administrados desde HubDB, con autenticación contra una API externa e integración con la API de HubSpot.
+- Contexto: Portal responsive de ventas y cobranza en campo.
+- Mi rol: Desarrollé gran parte del portal.
+- Qué construí: Agenda, planificación de visitas, formularios de visita y cobranza, cotizador de productos de crédito y administración de usuarios y roles.
+- Decisión clave: Roles y permisos (vendedor, supervisor, administrador) administrados desde HubDB, con autenticación contra una API externa e integración con la API de HubSpot.
 - Integraciones: APIs de Google para ubicar clientes y sucursales en mapa y manejar rutas de visita.
 - Stack: HubSpot CMS, JavaScript, APIs de Google, HubDB
 

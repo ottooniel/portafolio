@@ -10,14 +10,14 @@ export default function FlowDiagram({
   emphasizeCenter?: boolean;
 }) {
   const [left, center, right] = nodes;
-  const node = "flex-1 basis-0 rounded-[4px] border px-2.5 py-3.5 text-center";
+  const node = "flex-1 basis-0 rounded-[4px] border px-1.5 py-3 text-center md:px-2.5 md:py-3.5";
   const connector = <span className="h-px w-3.5 shrink-0 bg-outline-num md:w-8" />;
 
   return (
     <div
       role="img"
       aria-label={`Diagrama: ${left}, ${center} y ${right} conectados en fila; ${center} se apoya en ${data}.`}
-      className="w-full font-mono text-[10px] leading-snug text-text-body md:text-xs"
+      className="w-full font-mono text-[10px] leading-snug text-text md:text-xs"
     >
       <div className="flex items-center">
         <span className={`${node} border-line-strong`}>{left}</span>
@@ -27,7 +27,7 @@ export default function FlowDiagram({
         <span className={`${node} border-line-strong`}>{right}</span>
       </div>
       <span className="mx-auto block h-7 w-px bg-outline-num md:h-10" />
-      <span className="mx-auto block w-[62%] rounded-[4px] border border-accent px-2.5 py-3.5 text-center md:w-[46%]">
+      <span className="mx-auto block w-[62%] rounded-[4px] border border-accent px-1.5 py-3 text-center md:w-[46%] md:px-2.5 md:py-3.5">
         {data}
       </span>
     </div>

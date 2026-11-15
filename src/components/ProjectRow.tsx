@@ -5,17 +5,27 @@ import FlowDiagram from "./FlowDiagram";
 import TextLink from "./TextLink";
 
 const monoLabel = "font-mono text-[11px] font-medium tracking-[0.14em] uppercase";
-const mediaTag = `absolute top-3 left-3 rounded-[3px] bg-bg/85 px-2 py-1 text-text-muted ${monoLabel}`;
+
+// Insignia sobre el medio, igual en el tráiler, la miniatura y los diagramas.
+function MediaBadge({ children }: { children: string }) {
+  return (
+    <span className="absolute top-3.5 left-3.5 rounded-[3px] bg-bg/85 px-2.5 py-[5px] font-mono text-[11px] font-medium tracking-[0.1em] text-text-body uppercase">
+      {children}
+    </span>
+  );
+}
 
 function Media({ meta }: { meta: ProjectMeta }) {
   const { media, mediaLabel } = meta;
 
   if (media.type === "diagram") {
     return (
-      <div className="flex min-h-[420px] flex-col justify-between gap-10 border border-line bg-white/2 px-5 py-8 md:px-12 md:py-14">
-        <p className={`text-text-muted ${monoLabel}`}>{mediaLabel}</p>
+      <div className="relative flex items-center rounded-[6px] border border-line bg-white/2 px-4 pt-10 pb-11 md:min-h-[420px] md:px-12 md:py-14">
+        <MediaBadge>{mediaLabel}</MediaBadge>
         <FlowDiagram nodes={media.nodes} data={media.data} emphasizeCenter={media.emphasizeCenter} />
-        <p className="font-mono text-[10px] font-medium tracking-[0.14em] text-text-muted uppercase">{diagramNote}</p>
+        <p className="absolute bottom-3.5 left-4 font-mono text-[9px] font-medium tracking-[0.1em] text-text-muted uppercase md:bottom-4 md:left-12 md:text-[10px] md:tracking-[0.12em]">
+          {diagramNote}
+        </p>
       </div>
     );
   }
@@ -37,7 +47,7 @@ function Media({ meta }: { meta: ProjectMeta }) {
           className="aspect-[16/10] w-full object-cover object-right"
         />
       )}
-      <span className={mediaTag}>{mediaLabel}</span>
+      <MediaBadge>{mediaLabel}</MediaBadge>
     </div>
   );
 }
@@ -49,19 +59,20 @@ export default function ProjectRow({ meta, children }: { meta: ProjectMeta; chil
   return (
     <article
       aria-labelledby={titleId}
-      className="group grid gap-10 border-t border-line py-[72px] lg:grid-cols-[55fr_45fr] lg:items-start lg:gap-12 xl:gap-[72px]"
+      className="group grid gap-[18px] border-t border-line py-12 md:gap-12 md:py-[72px] lg:grid-cols-[55fr_45fr] lg:items-start xl:gap-[72px]"
     >
       <Media meta={meta} />
 
-      <div>
-        <div className="flex items-end gap-5">
+      {/* Todos los bloques de la columna de texto van separados 20 px (18 en móvil). */}
+      <div className="flex flex-col gap-[18px] md:gap-5">
+        <div className="flex items-end gap-4 md:gap-5">
           <span
             aria-hidden="true"
-            className="text-outline font-display text-[56px] leading-[0.8] font-semibold md:text-7xl"
+            className="text-outline mt-1.5 font-display text-[56px] leading-[0.8] font-semibold md:mt-0 md:text-7xl"
           >
             {meta.number}
           </span>
-          <p className={`${monoLabel} text-accent`}>
+          <p className="font-mono text-[11px] leading-normal font-medium tracking-[0.12em] text-accent uppercase">
             {meta.tag}
             {meta.note && (
               <span className="mt-1.5 block tracking-normal normal-case text-text-muted">{meta.note}</span>
@@ -71,25 +82,25 @@ export default function ProjectRow({ meta, children }: { meta: ProjectMeta; chil
 
         <h3
           id={titleId}
-          className="mt-8 font-display text-[30px] leading-[1.1] font-semibold tracking-[-0.03em] text-text md:text-4xl"
+          className="font-display text-[30px] leading-[1.05] font-semibold tracking-[-0.03em] text-text md:text-4xl"
         >
           {meta.title}
         </h3>
 
         {meta.kind === "public" ? (
           <>
-            <div className="mt-5 text-base leading-[1.65] md:text-[17px]">{children}</div>
-            <dl className="mt-8 flex flex-col gap-5 border-t border-line pt-6">
+            <div className="text-base leading-[1.65] md:text-[17px]">{children}</div>
+            <dl className="flex flex-col gap-[18px] border-t border-line pt-[18px] md:gap-5 md:pt-5">
               <div>
                 <dt className={`text-text-muted ${monoLabel}`}>Arquitectura</dt>
                 <dd className="mt-2 text-[15px] leading-[1.65]">{meta.architecture.join(" · ")}</dd>
               </div>
               <div>
                 <dt className={`text-text-muted ${monoLabel}`}>Stack</dt>
-                <dd className="mt-2 text-base text-text">{stack}</dd>
+                <dd className="mt-2 text-[15px] text-text md:text-base">{stack}</dd>
               </div>
             </dl>
-            <div className="mt-8 flex flex-wrap gap-7">
+            <div className="flex flex-wrap gap-6 md:mt-1 md:gap-7">
               {meta.links.map((link) => (
                 <TextLink key={link.href} href={link.href} external>
                   {link.label}
@@ -99,8 +110,10 @@ export default function ProjectRow({ meta, children }: { meta: ProjectMeta; chil
           </>
         ) : (
           <>
-            <dl className="mt-8 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-line pt-6">{children}</dl>
-            <p className="mt-8 font-mono text-xs leading-[1.65] text-text-muted">{stack}</p>
+            <dl className="grid gap-5 border-t border-line pt-[18px] sm:grid-cols-2 sm:gap-x-7 sm:gap-y-6 md:pt-5">
+              {children}
+            </dl>
+            <p className="font-mono text-xs leading-[1.7] text-text-muted">{stack}</p>
           </>
         )}
       </div>
