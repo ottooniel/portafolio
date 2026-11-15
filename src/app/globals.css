@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* Tokens de docs/diseno.md. El acento se cambia solo aquí. */
+/* El acento se cambia solo aquí. */
 :root {
   --accent: #1e90ff;
 }

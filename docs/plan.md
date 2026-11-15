@@ -11,7 +11,7 @@ Aprobado por Ottoniel el 2026-11-13. Si hay que cambiar el orden o el alcance de
 - [x] Fase 0 — Base
 - [x] Fase 1 — CI y Dependabot
 - [x] Fase 2 — Nav + hero
-- [ ] Fase 3 — Sobre mí + Cómo trabajo
+- [x] Fase 3 — Sobre mí + Cómo trabajo
 - [ ] Fase 4 — Proyectos
 - [ ] Fase 5 — Experiencia + Stack
 - [ ] Fase 6 — Contacto + pie

@@ -123,11 +123,19 @@ Escala (escritorio / móvil):
 
 - Escritorio: foto a la izquierda (400 px, proporción 4:5, `object-position: top`, radio 6, borde `rgba(255,255,255,.12)`, sin brillo) y texto a la derecha; separación 96 px, alineados arriba. Móvil: título, foto a todo el ancho y texto debajo.
 - Dos párrafos de `contenido.md`. Debajo, lista de definiciones con hairlines (arriba de cada fila y abajo de la última): etiqueta mono a 140 px (UBICACIÓN, ESTUDIOS, TRABAJO) y valor en `text` 16 px. Sin iconos.
+- Disposición en escritorio (≥ 1024 px): la foto ocupa la columna izquierda desde el borde superior de la sección. El rótulo, el H2, los párrafos y la lista de definiciones van todos en la columna derecha, debajo de la parte superior de la foto (el encabezado **no** va encima de las dos columnas). Móvil y tablet: rótulo y H2, foto, párrafos y lista, en ese orden.
+- Medidas (escritorio / móvil):
+  - Rótulo → H2: 20 / 16 px. H2 → primer párrafo: 36 / 32 px. En móvil, foto → primer párrafo: 32 px. El espacio bajo el H2 de las demás secciones lo define cada sección (Proyectos usa 72 / 48 px), así que el encabezado recibe ese margen como parámetro.
+  - Foto: ancho 400 px; entre 768 y 1023 px conserva un máximo de 400 px alineada a la izquierda (no se estira); en móvil, ancho completo.
+  - Párrafos: 19 / 16 px, `line-height: 1.7`, ancho máximo 620 px, separados 20 / 18 px.
+  - Lista de definiciones: margen superior 48 / 40 px, ancho máximo 620 px. Filas con padding 16 / 14 px, separación 24 / 16 px entre etiqueta y valor. Etiqueta de 140 / 104 px de ancho (mono 11 px, tracking .14em). Valor 16 / 15 px.
+  - Los rótulos mono de sección y de las listas usan tracking .14em; los números (`01`–`04`) .12em.
 - Sin `bg.webp` en esta sección.
 
 ### Cómo trabajo (dentro de Sobre mí)
 - Debajo de las dos columnas, a 96 px (móvil 56 px), un subtítulo mono "CÓMO TRABAJO" en `text-muted` (es un `h3`).
 - Escritorio: cuadrícula de 4 columnas (`repeat(auto-fit, minmax(240px, 1fr))`, separación 40 px). Cada punto tiene hairline arriba, número mono `01`–`04` en `accent`, título en Space Grotesk 600 de 20 px y una línea de texto `text-body` de 15 px.
+- Medidas: `h3` con 32 px debajo en escritorio (8 px en móvil). Escritorio: padding superior de cada punto 24 px; número → título 14 px; título → texto 10 px; título con tracking −.02em; texto con `line-height: 1.65`. Móvil: número con 5 px de padding superior, título → texto 6 px.
 - Móvil: lista vertical; número a la izquierda (22 px) y título de 18 px con el texto debajo, con hairlines entre filas.
 - Textos en `contenido.md`.
 

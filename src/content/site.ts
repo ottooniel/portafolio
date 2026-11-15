@@ -1,4 +1,4 @@
-// Textos de docs/contenido.md. Crece por fase.
+// Textos visibles del sitio. Crece por fase.
 
 export const name = "Ottoniel Menéndez";
 
@@ -37,4 +37,46 @@ export const hero = {
   primary: { label: "Ver proyectos", href: "/#proyectos" },
   secondary: { label: "Contactar", href: "/#contacto" },
   location: "Guatemala",
+};
+
+export const about = {
+  header: { number: "01", label: "Perfil", title: "Sobre mí" },
+  photoAlt: "Retrato de Ottoniel Menéndez",
+  paragraphs: [
+    [
+      "Soy desarrollador full stack en Guatemala y estudio Ingeniería en Sistemas de Información y Ciencias de la Computación en la Universidad Mariano Gálvez. Desde diciembre de 2024 trabajo en ",
+      { em: "NIU Solutions" },
+      " construyendo portales web para el sector financiero sobre HubSpot CMS, con JavaScript, funciones serverless y datos en HubDB.",
+    ],
+    [
+      "Me gusta cuidar el producto completo: desde la pantalla que usa el agente hasta cómo el área de negocio puede cambiarla sin tocar código.",
+    ],
+  ] satisfies RichText[],
+  facts: [
+    { label: "UBICACIÓN", value: "Guatemala" },
+    { label: "ESTUDIOS", value: "UMG (en curso)" },
+    { label: "TRABAJO", value: "NIU Solutions desde dic. 2024" },
+  ],
+};
+
+export const howIWork = {
+  title: "Cómo trabajo",
+  items: [
+    {
+      title: "Diseño antes de código.",
+      text: "Defino contenido, estructura y diseño antes de programar. Este sitio empezó como maqueta.",
+    },
+    {
+      title: "Ramas cortas y PR.",
+      text: "Cada cambio vive en una rama corta y entra a main por pull request, aunque trabaje solo.",
+    },
+    {
+      title: "Historial legible.",
+      text: "Commits convencionales (feat, fix, docs), tags de versión y CHANGELOG.",
+    },
+    {
+      title: "CI en cada cambio.",
+      text: "Lint, typecheck, build y Lighthouse antes de integrar. main siempre se puede desplegar.",
+    },
+  ],
 };
