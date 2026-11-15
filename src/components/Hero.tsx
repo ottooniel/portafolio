@@ -2,6 +2,7 @@ import Image from "next/image";
 import { hero, social } from "@/content/site";
 import Button from "./Button";
 import HeroVideo from "./HeroVideo";
+import RichText from "./RichText";
 import TextLink from "./TextLink";
 
 export default function Hero() {
@@ -41,13 +42,7 @@ export default function Hero() {
           {hero.role}
         </p>
         <p className="mt-[22px] max-w-[520px] text-base leading-[1.65] md:mt-7 md:text-lg">
-          {hero.phrase.map((part, i) =>
-            typeof part === "string" ? part : (
-              <span key={i} className="text-text">
-                {part.em}
-              </span>
-            ),
-          )}
+          <RichText parts={hero.phrase} />
         </p>
         <div className="mt-8 flex items-center gap-6 md:mt-10 md:gap-8">
           <Button href={hero.primary.href}>{hero.primary.label}</Button>

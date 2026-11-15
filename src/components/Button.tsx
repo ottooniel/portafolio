@@ -1,4 +1,4 @@
-// Botón primario (diseno.md → Hero): relleno `text`, texto `bg`, 48 px, radio 6, hover blanco.
+// Botón primario: relleno `text`, texto `bg`, 48 px, radio 6, hover blanco.
 export default function Button({ href, children }: { href: string; children: React.ReactNode }) {
   return (
     <a
