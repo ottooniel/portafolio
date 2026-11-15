@@ -3,7 +3,7 @@ export default function Button({ href, children }: { href: string; children: Rea
   return (
     <a
       href={href}
-      className="inline-flex h-12 items-center gap-2 rounded-[6px] bg-text px-6 text-[15px] font-medium text-bg transition-colors duration-200 hover:bg-white motion-reduce:transition-none"
+      className="inline-flex min-h-12 items-center gap-2.5 rounded-[6px] bg-text px-[22px] text-[15px] font-semibold text-bg transition-colors md:px-6 duration-200 hover:bg-white motion-reduce:transition-none"
     >
       {children}
       <span aria-hidden="true">→</span>

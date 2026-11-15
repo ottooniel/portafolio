@@ -22,13 +22,13 @@ export default function Hero() {
       />
       <HeroVideo />
       {/* Legibilidad: degradado vertical en móvil; desvanecido inferior de 160 px en escritorio. */}
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-linear-to-b from-bg/55 to-bg md:hidden" />
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-linear-to-b from-bg/55 via-bg/20 via-40% to-bg md:hidden" />
       <div
         aria-hidden="true"
         className="absolute inset-x-0 bottom-0 -z-10 hidden h-40 bg-linear-to-b from-transparent to-bg md:block"
       />
 
-      <div className="site-container pt-28 pb-14 md:py-32">
+      <div className="site-container pt-[104px] pb-[72px] md:pt-[136px] md:pb-[120px]">
         <h1
           id="hero-title"
           className="font-display text-[clamp(52px,7.2vw,104px)] leading-[0.98] font-bold tracking-[-0.035em] text-text"
@@ -37,10 +37,10 @@ export default function Hero() {
           <br />
           {hero.lastName}
         </h1>
-        <p className="mt-4 font-display text-2xl leading-tight font-semibold tracking-[-0.03em] text-text-muted md:mt-5 md:text-[clamp(26px,3vw,40px)]">
+        <p className="mt-4 font-display text-2xl leading-[1.1] font-semibold tracking-[-0.03em] text-text-muted md:mt-5 md:text-[clamp(26px,3vw,40px)]">
           {hero.role}
         </p>
-        <p className="mt-6 max-w-[520px] text-base leading-[1.65] md:mt-8 md:text-lg">
+        <p className="mt-[22px] max-w-[520px] text-base leading-[1.65] md:mt-7 md:text-lg">
           {hero.phrase.map((part, i) =>
             typeof part === "string" ? part : (
               <span key={i} className="text-text">
@@ -49,24 +49,24 @@ export default function Hero() {
             ),
           )}
         </p>
-        <div className="mt-8 flex items-center gap-8 md:mt-10">
+        <div className="mt-8 flex items-center gap-6 md:mt-10 md:gap-8">
           <Button href={hero.primary.href}>{hero.primary.label}</Button>
           <TextLink href={hero.secondary.href}>{hero.secondary.label}</TextLink>
         </div>
-        <div className="mt-10 flex items-center gap-4 md:mt-14">
+        <div className="mt-10 flex items-center gap-4 md:mt-14 md:gap-5">
           <a
             href={social.github}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="GitHub de Ottoniel Menéndez (abre en una pestaña nueva)"
-            className="flex size-11 items-center justify-center rounded-full border border-line-strong text-text transition-colors duration-200 hover:border-accent motion-reduce:transition-none"
+            aria-label="GitHub de Ottoniel (abre en una pestaña nueva)"
+            className="flex size-11 items-center justify-center rounded-full border border-white/18 text-text transition-colors duration-200 hover:border-accent motion-reduce:transition-none"
           >
-            <svg aria-hidden="true" viewBox="0 0 24 24" className="size-[18px] fill-none stroke-current stroke-[1.75]">
-              <path d="M8 6 2 12l6 6M16 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+            <svg aria-hidden="true" viewBox="0 0 24 24" className="size-[18px] fill-none stroke-current stroke-2">
+              <path d="M8 8l-4 4 4 4M16 8l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </a>
-          <span aria-hidden="true" className="h-6 w-px bg-line-strong" />
-          <span className="font-mono text-xs font-medium tracking-[0.12em] text-text-muted uppercase">
+          <span aria-hidden="true" className="h-6 w-px bg-white/18" />
+          <span className="font-mono text-xs font-normal tracking-[0.08em] text-text-muted">
             {hero.location}
           </span>
         </div>
