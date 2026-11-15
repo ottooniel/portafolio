@@ -105,9 +105,8 @@ Escala (escritorio / móvil):
 
 - Altura mínima 810 px (móvil 760 px).
 - Fondo: `hero_loop.mp4` a pantalla completa, `object-fit: cover`, `object-position: right center` (móvil `78% center`). Atributos `muted autoplay loop playsinline` y póster `hero_poster.webp`. Con `prefers-reduced-motion: reduce`, solo el póster.
-- Capa de legibilidad en móvil: degradado vertical de `rgba(3,10,26,.55)` arriba a `bg` abajo. Abajo del hero, desvanecido de 160 px hacia `bg` en escritorio.
 - Contenido alineado a la izquierda (en móvil, anclado abajo), en este orden: H1, subtítulo, frase, botones, fila de GitHub + ubicación.
-- Capa de legibilidad en móvil, con tres paradas (como la maqueta): `rgba(3,10,26,.55)` arriba, `rgba(3,10,26,.2)` al 40 % y `bg` abajo. Reemplaza la descripción de dos paradas de arriba.
+- Capa de legibilidad en móvil, con tres paradas (como la maqueta): `rgba(3,10,26,.55)` arriba, `rgba(3,10,26,.2)` al 40 % y `bg` abajo. En escritorio, abajo del hero, desvanecido de 160 px hacia `bg`.
 - Medidas (escritorio ≥ 768 px / móvil). El contenido va dentro del contenedor de 1200 px:
   - Posición: escritorio, centrado en vertical; el padding del contenido es 56 px arriba y 120 px abajo, medido debajo de la barra de 80 px. Móvil: anclado abajo, padding `40px 20px 72px`.
   - H1: Space Grotesk 700, `clamp(52px, 7.2vw, 104px)` (móvil 52 px), `line-height: .98`, tracking −.035em.
@@ -117,8 +116,7 @@ Escala (escritorio / móvil):
   - Botón primario: alto mínimo 48 px, padding horizontal 24 / 22 px, radio 6, texto Inter 15 px **600**, flecha a 10 px.
   - "Contactar": Inter 15 px 500, color `text`, subrayado fino a 4 px del texto.
   - Fila inferior: margen superior 56 / 40 px, separación 20 / 16 px. Círculo de 44 px con borde `rgba(255,255,255,.18)` (no `line-strong`), que contiene un ícono de código `</>` de 18 px (trazo 2, `path` "M8 8l-4 4 4 4M16 8l4 4-4 4"). Es un botón sin texto: lleva `aria-label="GitHub de Ottoniel (abre en una pestaña nueva)"`. Después, un separador vertical de 1 × 24 px en `rgba(255,255,255,.18)` y "Guatemala" en mono 12 px, tracking .08em, peso 400, `text-muted`, **tal cual está escrito (sin mayúsculas forzadas)**.
-- Botones: primario relleno `text` (`#f0f2f6`) con texto `bg` y flecha →, 48 px de alto, radio 6, hover blanco puro; secundario es un enlace de texto "Contactar" con subrayado fino `rgba(240,242,246,.35)` que pasa a `accent` en hover. Separación 32 px entre ambos.
-- Fila inferior: botón circular de 44 px con borde `line-strong` e icono de código (`<>`) que enlaza a GitHub (`aria-label` con "abre en una pestaña nueva"), una línea vertical de 24 px y "Guatemala" en mono 12 px `text-muted`.
+- Botones: el primario pasa a blanco puro en hover; el subrayado de "Contactar" pasa a `accent` en hover.
 - La línea de tecnologías (React · Node.js · MongoDB · MySQL) ya va dentro de la frase del hero; no se repite como chips.
 
 ## Sobre mí
