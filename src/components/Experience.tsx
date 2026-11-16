@@ -9,22 +9,21 @@ export default function Experience() {
   const { header, job, education, certifications } = experience;
   return (
     <Section id="experiencia">
-      <SectionHeader id="experiencia-title" className="mb-12 md:mb-16" {...header} />
+      <SectionHeader id="experiencia-title" className="mb-10 md:mb-16" {...header} />
 
       <div className={row}>
-        <p className={`${label} leading-[1.8]`}>
-          <span className="text-text">{job.dates}</span>
-          <br />
-          {job.mode}
+        <p className={label}>
+          <span className="block text-text">{job.dates}</span>
+          <span className="mt-2 block">{job.mode}</span>
         </p>
         <div>
           <h3 className="font-display text-2xl leading-tight font-semibold tracking-[-0.03em] text-text md:text-[28px]">
             {job.role}
           </h3>
-          <p className="mt-1 text-base text-text-muted">{job.company}</p>
-          <ul className="mt-5 max-w-[720px] list-disc space-y-2.5 pl-5 text-base leading-[1.65] marker:text-text-muted">
+          <p className="mt-2 text-base text-text-muted">{job.company}</p>
+          <ul className="mt-6 max-w-[720px] list-disc space-y-3 pl-[18px] text-base leading-[1.65] marker:text-text-muted">
             {job.bullets.map((b) => (
-              <li key={b}>{b}</li>
+              <li key={b} className="pl-1 md:pl-1.5">{b}</li>
             ))}
           </ul>
         </div>
@@ -33,10 +32,10 @@ export default function Experience() {
       <div className={row}>
         <p className={label}>{education.label}</p>
         <div>
-          <p className="font-display text-xl leading-snug font-semibold tracking-[-0.02em] text-text">
+          <p className="font-display text-lg leading-snug font-semibold tracking-[-0.02em] text-text md:text-xl">
             {education.degree}
           </p>
-          <p className="mt-1 text-base text-text-muted">{education.school}</p>
+          <p className="mt-2 text-base text-text-muted">{education.school}</p>
         </div>
       </div>
 
@@ -44,9 +43,9 @@ export default function Experience() {
         <p className={label}>{certifications.label}</p>
         <ul className="divide-y divide-white/7">
           {certifications.items.map((c) => (
-            <li key={c.name} className="py-3 first:pt-0 last:pb-0 sm:flex sm:items-baseline sm:justify-between sm:gap-6">
+            <li key={c.name} className="py-3 first:pt-0 last:pb-0 md:py-4 sm:flex sm:items-baseline sm:justify-between sm:gap-6">
               <span className="block text-base text-text">{c.name}</span>
-              <span className="mt-1 block shrink-0 font-mono text-xs text-text-muted sm:mt-0">{c.issuer}</span>
+              <span className="mt-1 block shrink-0 font-mono text-xs tracking-[0.06em] text-text-muted sm:mt-0">{c.issuer}</span>
             </li>
           ))}
         </ul>

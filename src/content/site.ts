@@ -114,7 +114,7 @@ export const stack = {
   header: { number: "04", label: "Herramientas", title: "Stack" },
   rows: [
     { label: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "HubL"] },
-    { label: "Backend", items: ["Node.js", "funciones serverless"] },
+    { label: "Backend", items: ["Node.js", "Funciones serverless"] },
     { label: "Datos", items: ["MongoDB", "MySQL", "HubDB"] },
     { label: "CMS", items: ["HubSpot CMS"] },
     { label: "Herramientas", items: ["Git", "GitHub", "GitHub Actions", "APIs de Google"] },

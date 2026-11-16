@@ -122,7 +122,7 @@ Criterio: solo lo que respalda el perfil (React/JavaScript, trabajo en equipo co
 ## Stack
 
 - Frontend: React, Next.js, TypeScript, Tailwind CSS, HubL
-- Backend: Node.js, funciones serverless
+- Backend: Node.js, Funciones serverless
 - Datos: MongoDB, MySQL, HubDB
 - CMS: HubSpot CMS
 - Herramientas: Git, GitHub, GitHub Actions, APIs de Google
