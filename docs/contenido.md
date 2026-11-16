@@ -112,12 +112,12 @@ Caso de estudio · Proyecto privado de cliente, sin demo pública
 
 **Certificaciones** (nombre · emisor, sin enlaces a las credenciales):
 
+- Middle Developer Front End JavaScript - React · ADA School
 - Registered Scrum Basics · Scrum Inc.
-- Curso de Angular 17 · Platzi
-- ISC2 Candidate · ISC2
-- Endpoint Security · Cisco
-- Introduction to Cybersecurity · Cisco
-- Networking Devices and Initial Configuration · Cisco
+- Desarrollo de software con Claude Code · DataCamp
+- Software Development with Cursor · DataCamp
+
+Criterio: solo lo que respalda el perfil (React/JavaScript, trabajo en equipo con Scrum y desarrollo con herramientas de IA). Fuera: cursos introductorios de Cisco, "ISC2 Candidate" (no es una certificación) y Angular 17 (no es parte del stack). Más adelante se puede agregar cualquier otra que apunte al mismo perfil.
 
 ## Stack
 

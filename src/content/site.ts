@@ -102,12 +102,10 @@ export const experience = {
   certifications: {
     label: "Certificaciones",
     items: [
+      { name: "Middle Developer Front End JavaScript - React", issuer: "ADA School" },
       { name: "Registered Scrum Basics", issuer: "Scrum Inc." },
-      { name: "Curso de Angular 17", issuer: "Platzi" },
-      { name: "ISC2 Candidate", issuer: "ISC2" },
-      { name: "Endpoint Security", issuer: "Cisco" },
-      { name: "Introduction to Cybersecurity", issuer: "Cisco" },
-      { name: "Networking Devices and Initial Configuration", issuer: "Cisco" },
+      { name: "Desarrollo de software con Claude Code", issuer: "DataCamp" },
+      { name: "Software Development with Cursor", issuer: "DataCamp" },
     ],
   },
 };
