@@ -80,3 +80,43 @@ export const howIWork = {
     },
   ],
 };
+
+export const experience = {
+  header: { number: "03", label: "Trayectoria", title: "Experiencia" },
+  job: {
+    dates: "dic. 2024 — Actualidad",
+    mode: "Híbrido",
+    role: "Ingeniero de software",
+    company: "NIU Solutions",
+    bullets: [
+      "Portales web para el sector financiero sobre HubSpot CMS (HubL, JavaScript, funciones serverless y HubDB).",
+      "Portal 360: desarrollé la mayor parte, del frontend a la integración con funciones serverless.",
+      "Portal para agentes de campo: desarrollé gran parte; mapas y rutas con APIs de Google, roles y permisos desde HubDB, autenticación contra una API externa e integración con la API de HubSpot.",
+    ],
+  },
+  education: {
+    label: "Educación",
+    degree: "Ingeniería en Sistemas de Información y Ciencias de la Computación",
+    school: "Universidad Mariano Gálvez de Guatemala · En curso",
+  },
+  certifications: {
+    label: "Certificaciones",
+    items: [
+      { name: "Middle Developer Front End JavaScript - React", issuer: "ADA School" },
+      { name: "Registered Scrum Basics", issuer: "Scrum Inc." },
+      { name: "Desarrollo de software con Claude Code", issuer: "DataCamp" },
+      { name: "Software Development with Cursor", issuer: "DataCamp" },
+    ],
+  },
+};
+
+export const stack = {
+  header: { number: "04", label: "Herramientas", title: "Stack" },
+  rows: [
+    { label: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "HubL"] },
+    { label: "Backend", items: ["Node.js", "Funciones serverless"] },
+    { label: "Datos", items: ["MongoDB", "MySQL", "HubDB"] },
+    { label: "CMS", items: ["HubSpot CMS"] },
+    { label: "Herramientas", items: ["Git", "GitHub", "GitHub Actions", "APIs de Google"] },
+  ],
+};

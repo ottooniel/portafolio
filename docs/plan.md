@@ -13,7 +13,7 @@ Aprobado por Ottoniel el 2026-11-13. Si hay que cambiar el orden o el alcance de
 - [x] Fase 2 — Nav + hero
 - [x] Fase 3 — Sobre mí + Cómo trabajo
 - [x] Fase 4 — Proyectos
-- [ ] Fase 5 — Experiencia + Stack
+- [x] Fase 5 — Experiencia + Stack
 - [ ] Fase 6 — Contacto + pie
 - [ ] Fase 7 — SEO, accesibilidad, og, 404 y pulido
 - [ ] Fase 8 — Despliegue y release v1.0.0

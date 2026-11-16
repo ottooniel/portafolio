@@ -209,6 +209,12 @@ Todo formato nuevo en WebP, salvo `og`. Pendiente: la captura del portafolio una
 - Puesto: a la izquierda, fechas en mono 11 px mayúsculas (`DIC. 2024 — ACTUALIDAD` en `text`, `HÍBRIDO` debajo en `text-muted`). A la derecha, el cargo como H3 (Space Grotesk 600, 28 px; móvil 24), la empresa en `text-muted` 16 px y las viñetas en `text-body` 16 px (marcador `text-muted`, máx. 720 px).
 - Educación: etiqueta mono a la izquierda; a la derecha la carrera en Space Grotesk 600 de 20 px y "Universidad Mariano Gálvez de Guatemala · En curso" en `text-muted`.
 - Certificaciones: etiqueta mono a la izquierda; a la derecha una lista con separadores muy tenues (`rgba(255,255,255,.07)`): nombre en `text` 16 px a la izquierda y emisor en mono 12 px `text-muted` a la derecha (en móvil, el emisor debajo). Sin enlaces a las credenciales.
+- Medidas (escritorio / móvil):
+  - H2 → primera fila: 64 / 40 px.
+  - Puesto: empresa a 8 px bajo el cargo; la lista de viñetas a 24 px de la empresa, con 12 px entre viñetas (máx. 720 px) y sangría de 18 px más 6 / 4 px de padding en cada ítem. Fechas y modalidad separadas 8 px.
+  - Educación: la carrera mide 20 / 18 px; la universidad va a 8 px debajo.
+  - Certificaciones: padding de cada fila 16 / 12 px (la primera sin padding superior y la última sin inferior). El emisor va en mono 12 px con tracking .06em.
+  - Stack: padding de cada fila 28 / 20 px; la tecnología en Space Grotesk 500 de 24 / 19 px, `line-height` 1.4 / 1.45, y 8 px entre etiqueta y valor en móvil. H2 → primera fila: 64 / 40 px.
 - En móvil todo va en una columna: la etiqueta o las fechas arriba de cada bloque.
 
 ## Stack (`[ 04 ] Herramientas`, fondo `bg-alt`)
