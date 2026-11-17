@@ -1,6 +1,7 @@
 import { experience } from "@/content/site";
 import Section from "./Section";
 import SectionHeader from "./SectionHeader";
+import TextLink from "./TextLink";
 
 const row = "border-t border-line py-7 md:py-10 lg:grid lg:grid-cols-[240px_1fr] lg:gap-12";
 const label = "mb-4 font-mono text-[11px] font-medium tracking-[0.14em] text-text-muted uppercase lg:mb-0";
@@ -20,7 +21,11 @@ export default function Experience() {
           <h3 className="font-display text-2xl leading-tight font-semibold tracking-[-0.03em] text-text md:text-[28px]">
             {job.role}
           </h3>
-          <p className="mt-2 text-base text-text-muted">{job.company}</p>
+          <p className="mt-2 text-base">
+            <TextLink href={job.companyUrl} external className="text-text-muted hover:text-text">
+              {job.company}
+            </TextLink>
+          </p>
           <ul className="mt-6 max-w-[720px] list-disc space-y-3 pl-[18px] text-base leading-[1.65] marker:text-text-muted">
             {job.bullets.map((b) => (
               <li key={b} className="pl-1 md:pl-1.5">{b}</li>
@@ -44,7 +49,15 @@ export default function Experience() {
         <ul className="divide-y divide-white/7">
           {certifications.items.map((c) => (
             <li key={c.name} className="py-3 first:pt-0 last:pb-0 md:py-4 sm:flex sm:items-baseline sm:justify-between sm:gap-6">
-              <span className="block text-base text-text">{c.name}</span>
+              <span className="block text-base text-text">
+                {c.url ? (
+                  <TextLink href={c.url} external className="text-text">
+                    {c.name}
+                  </TextLink>
+                ) : (
+                  c.name
+                )}
+              </span>
               <span className="mt-1 block shrink-0 font-mono text-xs tracking-[0.06em] text-text-muted sm:mt-0">{c.issuer}</span>
             </li>
           ))}

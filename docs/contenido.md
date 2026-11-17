@@ -28,16 +28,16 @@ Fuente única de textos del sitio. Idioma: español. Voz: primera persona, direc
 
 ## Sobre mí
 
-Soy desarrollador full stack en Guatemala y estudio Ingeniería en Sistemas de Información y Ciencias de la Computación en la Universidad Mariano Gálvez. Desde diciembre de 2024 trabajo en NIU Solutions construyendo portales web para el sector financiero sobre HubSpot CMS, con JavaScript, funciones serverless y datos en HubDB.
+Soy desarrollador full stack. Construyo portales web para el sector financiero sobre HubSpot CMS, con JavaScript, funciones serverless y datos en HubDB.
 
 Me gusta cuidar el producto completo: desde la pantalla que usa el agente hasta cómo el área de negocio puede cambiarla sin tocar código.
 
-Palabra en color `text` dentro de los párrafos: solo "NIU Solutions".
+Sin palabras resaltadas en los párrafos. Ubicación, estudios y trabajo no se repiten en el texto: están en la lista de datos.
 
 Datos (etiqueta → valor, tal cual):
 - UBICACIÓN → Guatemala
 - ESTUDIOS → UMG (en curso)
-- TRABAJO → NIU Solutions desde dic. 2024
+- TRABAJO → NIU Solutions desde dic. 2024 ("NIU Solutions" es enlace externo a https://niu.solutions/)
 
 ### Cómo trabajo
 
@@ -102,7 +102,7 @@ Caso de estudio · Proyecto privado de cliente, sin demo pública
 
 ## Experiencia
 
-**Ingeniero de software · NIU Solutions** · dic. 2024 – Actualidad · Híbrido
+**Ingeniero de software · NIU Solutions** (la empresa es enlace externo a https://niu.solutions/) · dic. 2024 – Actualidad · Híbrido
 
 - Portales web para el sector financiero sobre HubSpot CMS (HubL, JavaScript, funciones serverless y HubDB).
 - Portal 360: desarrollé la mayor parte, del frontend a la integración con funciones serverless.
@@ -110,12 +110,12 @@ Caso de estudio · Proyecto privado de cliente, sin demo pública
 
 **Educación:** Ingeniería en Sistemas de Información y Ciencias de la Computación · Universidad Mariano Gálvez de Guatemala · En curso
 
-**Certificaciones** (nombre · emisor, sin enlaces a las credenciales):
+**Certificaciones** (nombre · emisor; el nombre es enlace externo a la credencial pública cuando existe):
 
-- Middle Developer Front End JavaScript - React · ADA School
-- Registered Scrum Basics · Scrum Inc.
-- Desarrollo de software con Claude Code · DataCamp
-- Software Development with Cursor · DataCamp
+- Middle Developer Front End JavaScript - React · ADA School — https://innova.learn.ada-school.org/certifications/682beee15399469ed776b1b1
+- Registered Scrum Basics · Scrum Inc. (sin enlace: no hay credencial pública)
+- Desarrollo de software con Claude Code · DataCamp — https://www.datacamp.com/completed/statement-of-accomplishment/course/1fffbd277d68e277f0eb9a760f487241b6fa2984
+- Software Development with Cursor · DataCamp — https://www.datacamp.com/completed/statement-of-accomplishment/course/14f5c07fa48141b6cc8fdf45686c1dd4b2bf226a
 
 Criterio: solo lo que respalda el perfil (React/JavaScript, trabajo en equipo con Scrum y desarrollo con herramientas de IA). Fuera: cursos introductorios de Cisco, "ISC2 Candidate" (no es una certificación) y Angular 17 (no es parte del stack). Más adelante se puede agregar cualquier otra que apunte al mismo perfil.
 
