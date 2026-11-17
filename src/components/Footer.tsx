@@ -1,7 +1,7 @@
 import { footer, name, social } from "@/content/site";
 
 const linkClass =
-  "text-sm text-text-muted transition-colors duration-200 hover:text-text motion-reduce:transition-none";
+  "tap-target text-sm text-text-muted transition-colors duration-200 hover:text-text motion-reduce:transition-none";
 
 const external = [
   { label: "GitHub", href: social.github },

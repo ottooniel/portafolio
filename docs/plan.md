@@ -15,7 +15,7 @@ Aprobado por Ottoniel el 2026-11-13. Si hay que cambiar el orden o el alcance de
 - [x] Fase 4 — Proyectos
 - [x] Fase 5 — Experiencia + Stack
 - [x] Fase 6 — Contacto + pie
-- [ ] Fase 7 — SEO, accesibilidad, og, 404 y pulido
+- [x] Fase 7 — SEO, accesibilidad, og, 404 y pulido
 - [ ] Fase 8 — Despliegue y release v1.0.0
 
 ## Reglas comunes a todas las fases
@@ -35,7 +35,7 @@ Aprobado por Ottoniel el 2026-11-13. Si hay que cambiar el orden o el alcance de
 
 Se mantiene el orden 0–8 con **un ajuste**: la *conexión* del repo a Vercel (solo vistas previas) pasa a la fase 1; la fase 8 queda como producción + release.
 
-Razón: `CLAUDE.md` exige "vista previa por PR" y revisión visual en cada fase; si Vercel se conecta en la fase 8, las fases 2–7 se revisan sin vista previa y el punto "CI en cada cambio / vista previa por PR" no es verdad durante casi todo el proyecto. El riesgo es nulo porque el `noindex` entra en la fase 0. Es un paso manual de Ottoniel (confirmado); la captura de la fase 7 se toma de esa vista previa.
+Razón: `CLAUDE.md` exige "vista previa por PR" y revisión visual en cada fase; si Vercel se conecta en la fase 8, las fases 2–7 se revisan sin vista previa y el punto "CI en cada cambio / vista previa por PR" no es verdad durante casi todo el proyecto. El riesgo es nulo porque el `noindex` entra en la fase 0. Es un paso manual de Ottoniel (confirmado).
 
 ---
 
@@ -182,11 +182,12 @@ Razón: `CLAUDE.md` exige "vista previa por PR" y revisión visual en cada fase;
 ## Fase 7 — SEO, accesibilidad, og, 404 y pulido
 
 - **Objetivo:** cerrar calidad antes de publicar.
-- **Entra:** metadata completa (Open Graph, Twitter, `metadataBase` desde `NEXT_PUBLIC_SITE_URL`); imagen `og` 1200×630 (fondo `hero_poster.webp`, "Ottoniel Menéndez" y "Full Stack Developer" en Space Grotesk, sin "Portafolio"); captura real del hero a 1440 px en 16:10, tomada de la vista previa de Vercel, para la fila "Este portafolio"; página 404 con su diseño (`diseno.md` → Página 404); auditoría de accesibilidad y repaso visual fino sección por sección.
+- **Entra:** metadata completa (Open Graph, Twitter y `metadataBase`); imagen `og` 1200×630 (fondo `hero_poster.webp`, "Ottoniel Menéndez" y "Full Stack Developer" en Space Grotesk, sin "Portafolio"); captura real del hero a 1440 px en 16:10, tomada del build estático (`npx serve out`), para la fila "Este portafolio"; página 404 con su diseño (`diseno.md` → Página 404); auditoría de accesibilidad y repaso visual fino sección por sección; dos pulidos del formulario de la fase 6: el loader del botón va antes del texto ("◌ Enviando", separación 12 px) y, mientras se envía, cada campo se atenúa al 60 % completo, etiqueta incluida.
+- **`metadataBase`:** usa `NEXT_PUBLIC_SITE_URL` si existe; si no, `https://${VERCEL_PROJECT_PRODUCTION_URL}` cuando Vercel define esa variable; si no, `http://localhost:3000`. `NEXT_PUBLIC_SITE_URL` queda documentada en `.env.example` (sin valor) y en el README.
 - **No entra:** quitar el `noindex`, `sitemap.xml`, analítica, versión en inglés.
 - **Rama / PR:** `feat/seo-y-accesibilidad` · `feat: completar SEO, accesibilidad, imagen og y página 404`
-- **Imagen og:** primero `src/app/opengraph-image.tsx` (generada en el build). Si no funciona con `output: 'export'`, un JPG 1200×630 estático. Se decide con el build y se anota en el PR.
-- **Archivos:** `src/app/layout.tsx`, `src/app/not-found.tsx`, `src/components/NotFoundPath.tsx` (`"use client"`: lee `window.location.pathname`), `src/app/opengraph-image.tsx` (o el JPG), `public/portafolio.webp`, `src/content/projects/portafolio.mdx`, `src/content/site.ts` (textos de la 404), `.env.example` (`NEXT_PUBLIC_SITE_URL=`), ajustes puntuales en componentes; `docs/diseno.md` y `docs/contenido.md` (quitar los "pendiente" ya resueltos).
+- **Imagen og:** JPG estático `public/og.jpg` (1200×630). Se probó primero `src/app/opengraph-image.tsx`: compila con `output: 'export'`, pero `ImageResponse` no pinta el fondo WebP, necesita descargar las fuentes en TTF durante el build y el archivo exportado sale sin extensión.
+- **Archivos:** `src/app/layout.tsx`, `src/app/not-found.tsx`, `src/components/NotFoundPath.tsx` (`"use client"`: lee `window.location.pathname`), `public/og.jpg`, `public/portafolio.webp`, `src/content/projects/portafolio.mdx`, `src/content/site.ts` (textos de la 404), `.env.example` (`NEXT_PUBLIC_SITE_URL=`), `README.md`, `src/components/ContactForm.tsx` (pulidos del formulario), ajustes puntuales en componentes; `docs/diseno.md` y `docs/contenido.md` (quitar los "pendiente" ya resueltos).
 - **Criterios de aceptación:**
   - `out/404.html` existe: misma nav (con el nombre siempre visible y fondo `bg`), pie mínimo, un solo `h1` "Página no encontrada", título de pestaña propio, "404" decorativo solo trazo con `aria-hidden`, fondo fijo `hero_poster.webp` (sin video) con su degradado, botón "← Volver al inicio" a `/` y enlaces a `/#proyectos` y `/#contacto`. La línea `GET {ruta} → 404` aparece solo cuando hay ruta y no desborda con rutas largas. Revisada a 1440 y 390 (botón a todo el ancho en móvil).
   - `out/index.html` con `og:title`, `og:description`, `og:image` (URL absoluta), `twitter:card=summary_large_image` y sigue con `noindex`.
@@ -224,8 +225,8 @@ Las 21 dudas del plan inicial quedaron resueltas por Ottoniel el 2026-11-13 y es
 - **Formulario:** Formspree. Ottoniel crea la cuenta y el formulario antes de la fase 6.
 - **Vercel:** Ottoniel conecta el repo en la fase 1 (solo vistas previas).
 - **`next.config.ts`:** se quitan `cacheComponents` y `partialPrefetching` en la fase 0.
-- **Imagen og:** la compongo en la fase 7; `opengraph-image` de Next si funciona con export estático, si no un JPG 1200×630.
-- **URL del sitio:** `*.vercel.app` por ahora, leída de `NEXT_PUBLIC_SITE_URL`.
+- **Imagen og:** JPG estático 1200×630 en `public/og.jpg` (fase 7); `opengraph-image` de Next se descartó al probarlo con el build.
+- **URL del sitio:** `*.vercel.app` por ahora, leída de `NEXT_PUBLIC_SITE_URL`; sin ella, del dominio de producción que define Vercel (`VERCEL_PROJECT_PRODUCTION_URL`).
 - **Favicon:** "OM" en `src/app/icon.svg` (fase 0).
 - **Maqueta:** es privada; no se abre. Manda `diseno.md`.
 - **Release:** el tag `v1.0.0` y el GitHub Release los crea Ottoniel después del merge.
@@ -236,5 +237,5 @@ Las 21 dudas del plan inicial quedaron resueltas por Ottoniel el 2026-11-13 y es
 
 Ninguna bloquea el arranque de la fase 0. Dos puntos se confirman con el build, no con una decisión:
 
-1. Si `opengraph-image.tsx` funciona con `output: 'export'` (fase 7). Si no, JPG estático.
+1. Si `opengraph-image.tsx` funciona con `output: 'export'` (fase 7). Resuelto: se usa el JPG estático.
 2. Si el build queda limpio al quitar `cacheComponents` / `partialPrefetching` (fase 0).

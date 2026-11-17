@@ -19,7 +19,7 @@ export default function Contact() {
           <p className="mt-7 md:mt-10">
             <a
               href={`mailto:${social.email}`}
-              className="inline-block border-b border-text/35 pb-[5px] font-display text-[21px] font-medium text-text transition-colors duration-200 hover:border-accent motion-reduce:transition-none md:pb-1.5 md:text-[26px]"
+              className="tap-target inline-block border-b border-text/35 pb-[5px] font-display text-[21px] font-medium text-text transition-colors duration-200 hover:border-accent motion-reduce:transition-none md:pb-1.5 md:text-[26px]"
             >
               {social.email}
             </a>

@@ -15,7 +15,7 @@ export default function TextLink({
     <a
       href={href}
       {...(external && { target: "_blank", rel: "noopener noreferrer" })}
-      className={`${className} underline decoration-text/35 decoration-1 underline-offset-4 transition-colors duration-200 hover:decoration-accent motion-reduce:transition-none`}
+      className={`${className} tap-target underline decoration-text/35 decoration-1 underline-offset-4 transition-colors duration-200 hover:decoration-accent motion-reduce:transition-none`}
     >
       {children}
       {external && (

@@ -153,7 +153,7 @@ Estructura de cada fila (≥ 1024 px): dos columnas, medio a la izquierda (≈ 5
 
 **Columna de medio:**
 - Echo: el tráiler vertical (4:5) dentro del marco 16:10 con fondo `#000` y `object-fit: contain`. El fondo del juego es negro, así que las franjas laterales no se notan. `<video muted loop playsinline preload="none" poster="echo_poster.webp">` con `echo_preview.mp4`. Se reproduce solo mientras está en pantalla (IntersectionObserver) y se pausa al salir; con `prefers-reduced-motion: reduce` se queda en el póster. Sin controles ni sonido; el video es decorativo (`aria-hidden="true"`) porque el texto de la fila ya lo describe. En móvil, el marco pasa a 4:5 y el video ocupa todo el ancho.
-- Este portafolio: miniatura 16:10, radio 6, borde `line`, con `hero_poster.webp` y `object-position: right center` hasta tener la captura del sitio construido. La captura final (fase 7) es el hero a 1440 px de ancho en 16:10, tomada de la vista previa de Vercel, en WebP.
+- Este portafolio: miniatura 16:10, radio 6, borde `line`, con la captura del hero del sitio construido (`portafolio.webp`, 1440 × 900; ver "Assets").
 - En ambos, una etiqueta mono arriba a la izquierda sobre fondo `rgba(3,10,26,.85)`, radio 3, p. ej. "01 / ECHO".
 - Casos: caja con borde `line` y fondo `rgba(255,255,255,.02)` (único "contenedor" permitido) con el diagrama centrado, padding 56 px 48 px, alto mínimo 420 px, etiqueta superior "03 / PORTAL 360" y al pie "Diagrama simplificado, sin datos del cliente" en mono 10 px mayúsculas `text-muted`.
 
@@ -184,7 +184,7 @@ HTML y CSS, no imágenes (accesibles y editables).
 
 - Un solo `h1`. HTML semántico: `header`, `nav`, `section` con `id`, `article`, `dl`.
 - Foco visible: contorno blanco de 2 px con desplazamiento de 4 px en enlaces y botones.
-- Áreas táctiles de al menos 44 px (botón circular, hamburguesa) y 48 px en botones de texto.
+- Áreas táctiles de al menos 44 px (botón circular, hamburguesa) y 48 px en botones de texto. Los enlaces de texto (nav, pie, menú móvil, "↗") amplían su área de toque a 44 px con un pseudoelemento invisible, sin cambiar su caja ni su aspecto.
 - Iconos decorativos con `aria-hidden="true"`. La foto lleva `alt` ("Retrato de Ottoniel Menéndez"); las miniaturas decorativas, `alt=""`.
 - Movimiento: solo las transiciones de hover (≤ 250 ms), el video del hero y el tráiler de Echo; los dos videos respetan `prefers-reduced-motion`.
 - Los números grandes de proyecto son decorativos (`aria-hidden="true"`).
@@ -199,9 +199,14 @@ HTML y CSS, no imágenes (accesibles y editables).
 | `echo.webp` | Versión 16:10 del póster (1600×1000) para usos estáticos, como una futura imagen `og` del proyecto |
 | `cover.webp` | Respaldo para un proyecto nuevo sin captura |
 | `bg.webp` | Sin uso en esta versión; se conserva en el repo por si hace falta |
-| `og` (fase 7) | Imagen para redes de 1200×630: fondo `hero_poster.webp`, nombre y cargo en Space Grotesk, sin la palabra "Portafolio". Generada con `opengraph-image` de Next si funciona con export estático; si no, un JPG en `public/` |
+| `portafolio.webp` | Captura del hero para la fila "Este portafolio" (1440×900) |
+| `og.jpg` | Imagen para redes de 1200×630: fondo `hero_poster.webp`, nombre y cargo en Space Grotesk, sin la palabra "Portafolio". JPG estático: `opengraph-image` de Next no pinta el fondo WebP y exporta el archivo sin extensión |
 
-Todo formato nuevo en WebP, salvo `og`. Pendiente: la captura del portafolio una vez construido (fase 7).
+**Imagen `og` (1200 × 630):** fondo `hero_poster.webp` a cubrir, `object-position: right center`, con un degradado de izquierda a derecha de `bg` (hasta el 35 %) a `rgba(3,10,26,.2)`. Contenido alineado a la izquierda, a 72 px del borde y 72 px del borde inferior, anclado abajo: "Ottoniel Menéndez" en Space Grotesk 700, 96 px, `line-height` 1, tracking −.035em, color `text`; debajo, a 20 px, "Full Stack Developer" en Space Grotesk 500, 40 px, color `text-body`. Sin logos, sin la palabra "Portafolio", sin URL y sin adornos. (Esta composición la define el diseño; si el resultado no convence, se ajusta en la revisión del PR.)
+
+**Captura "Este portafolio" (`public/portafolio.webp`, 1440 × 900):** el hero del sitio construido (`npx serve out`) a 1440 px de ancho, 16:10, con `prefers-reduced-motion: reduce` emulado (se ve el póster, sin video), `scrollY = 0` y la nav en su estado sobre el hero (nombre oculto). WebP calidad ~80, idealmente < 150 KB. En `portafolio.mdx`, `width: 1440` y `height: 900`, y se quita el comentario de "mientras no haya captura".
+
+Todo formato nuevo en WebP, salvo `og`.
 
 ## Experiencia (`[ 03 ] Trayectoria`, fondo `bg`)
 
@@ -228,7 +233,7 @@ Todo formato nuevo en WebP, salvo `og`. Pendiente: la captura del portafolio una
 - Izquierda: rótulo, H2 con el título de `contenido.md` (48 px, máx. 520 px; móvil 34 px), el texto en `text-body` 18 px, el correo como enlace `mailto:` en Space Grotesk 500 de 26 px (móvil 21 px) con subrayado fino y, debajo, "GitHub ↗" y "LinkedIn ↗" como enlaces de texto.
 - Derecha: formulario sin cajas. Cada campo tiene su `label` mono 11 px arriba y solo una línea inferior `line-strong`; 52 px de alto (el mensaje, mínimo 128 px). Con foco, la línea pasa a `accent`. Botón primario igual al del hero: "Enviar mensaje →" (en móvil, a todo el ancho).
 - Estados (maquetados en su tablero; textos en `contenido.md`):
-  - **Enviando:** los campos quedan de solo lectura al 60 % de opacidad y el formulario lleva `aria-busy="true"`. El botón queda deshabilitado (`cursor: progress`) con un loader en lugar de la flecha: anillo SVG de 16 px, trazo 1.75 px, pista `rgba(3,10,26,.2)` y arco `bg` que gira en 0.8 s lineal. Con `prefers-reduced-motion: reduce` el anillo no gira. El botón tiene `min-width: 196px` para que no cambie de ancho entre estados.
+  - **Enviando:** cada campo (etiqueta y línea incluidas, no solo el texto escrito) queda de solo lectura al 60 % de opacidad y el formulario lleva `aria-busy="true"`. El botón queda deshabilitado (`cursor: progress`) con el loader **antes** del texto ("◌ Enviando", separación 12 px) y sin flecha: anillo SVG de 16 px (círculo de radio 6,5), trazo 1.75 px, pista `rgba(3,10,26,.2)` y arco `bg` que gira en 0.8 s lineal. Con `prefers-reduced-motion: reduce` el anillo no gira. El botón tiene `min-width: 196px` para que no cambie de ancho entre estados.
   - **Enviado:** los campos se vacían. Debajo del botón, una región `role="status"` / `aria-live="polite"` con hairline arriba (`line`), etiqueta mono 11 px en `accent` y el mensaje en `text` 16 px.
   - **Error:** los campos conservan lo escrito y el botón dice "Reintentar →". La misma región, con la línea superior en `rgba(255,122,122,.35)`, etiqueta en `danger` y el mensaje en `text` con el correo como enlace subrayado. El estado no depende solo del color: la etiqueta dice qué pasó.
   - Sin cajas, sin íconos de check o cruz.
@@ -258,6 +263,14 @@ Todo formato nuevo en WebP, salvo `og`. Pendiente: la captura del portafolio una
   4. Texto en `text-body` 18 px (móvil 16), máx. 480 px.
   5. Línea de ruta en mono 13 px (móvil 12) dentro de un recuadro con borde `line` y radio 4: `GET` y `→ 404` en `text-muted`, la ruta en `text`. La ruta se lee en el cliente (`window.location.pathname`) y la línea no se muestra si no hay ruta. Cortar palabras largas (`overflow-wrap: anywhere`).
   6. Botón primario "← Volver al inicio" y enlaces de texto "Ver proyectos" y "Contactar". En móvil el botón va a todo el ancho (52 px) y los enlaces debajo.
+- Medidas (escritorio / móvil):
+  - Página: alto mínimo 100 vh (900 px en la lámina), nav arriba con hairline `rgba(255,255,255,.08)` y pie abajo con hairline `line` y padding `32px 24px` (solo el © mono 12 px, tracking .06em, `text-muted`; en móvil no hay pie).
+  - Contenido: `padding: 72px 24px 96px` (móvil `40px 20px 48px`), ancho máximo 1200 px, centrado en vertical en escritorio y anclado abajo en móvil.
+  - "404": `line-height` .8, tracking −.04em, trazo 1 px `outline-num`, relleno transparente.
+  - Rótulo: a 48 / 36 px del "404". H1: a 20 / 16 px del rótulo, `line-height` 1 / 1.02, tracking −.035em. Texto: a 24 / 18 px del H1, máx. 480 px, 18 / 16 px, `line-height` 1.65 / 1.6.
+  - Línea de ruta: a 20 / 16 px del texto, padding `10px 14px` (móvil `9px 12px`), borde `line`, radio 4, mono 13 / 12 px, `text-muted`, ruta en `text`.
+  - Acciones: a 40 / 32 px de la línea de ruta. Escritorio: botón y dos enlaces en fila con separación 32 px, centrados en vertical. Móvil: botón de 52 px a todo el ancho y debajo, a 24 px, los dos enlaces separados 24 px. Botón primario igual al de Contacto (48 px, radio 6, `gap` 10 px, hover blanco); enlaces 15 px peso 500 con subrayado fino (el subrayado pasa a `accent` en hover).
+  - Fondo: imagen al 55 % (móvil 40 %). Degradado escritorio: `linear-gradient(to right, bg 30%, rgba(3,10,26,.6) 65%, rgba(3,10,26,.2))`; móvil: `linear-gradient(to bottom, rgba(3,10,26,.5), rgba(3,10,26,.75) 45%, bg 75%)`.
 - Con export estático, Next genera `out/404.html` y Vercel lo sirve en cualquier ruta inexistente.
 
 ## Pie

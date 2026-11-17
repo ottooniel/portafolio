@@ -17,7 +17,7 @@ export default function Nav({ overHero = false }: { overHero?: boolean }) {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="text-sm font-medium text-text-muted transition-colors duration-200 hover:text-text motion-reduce:transition-none"
+                  className="tap-target text-sm font-medium text-text-muted transition-colors duration-200 hover:text-text motion-reduce:transition-none"
                 >
                   {link.label}
                 </a>

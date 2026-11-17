@@ -42,3 +42,4 @@ Copia `.env.example` a `.env.local` y completa los valores. `.env.local` no se s
 | Variable | Uso |
 |---|---|
 | `NEXT_PUBLIC_FORMSPREE_ID` | ID del formulario de [Formspree](https://formspree.io) que recibe los mensajes de contacto (la parte final de `https://formspree.io/f/<id>`). Se lee al hacer el build; en Vercel va en Preview y Production. Si falta, el build no falla y el formulario muestra el estado de error. |
+| `NEXT_PUBLIC_SITE_URL` | URL pública del sitio (por ejemplo `https://mi-dominio.com`). Con ella se arman las URL absolutas de Open Graph y Twitter (`og:image`). Es opcional: si falta, en Vercel se usa el dominio de producción del proyecto (`VERCEL_PROJECT_PRODUCTION_URL`) y, fuera de Vercel, `http://localhost:3000`. |
