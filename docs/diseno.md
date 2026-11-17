@@ -232,6 +232,18 @@ Todo formato nuevo en WebP, salvo `og`. Pendiente: la captura del portafolio una
   - **Enviado:** los campos se vacían. Debajo del botón, una región `role="status"` / `aria-live="polite"` con hairline arriba (`line`), etiqueta mono 11 px en `accent` y el mensaje en `text` 16 px.
   - **Error:** los campos conservan lo escrito y el botón dice "Reintentar →". La misma región, con la línea superior en `rgba(255,122,122,.35)`, etiqueta en `danger` y el mensaje en `text` con el correo como enlace subrayado. El estado no depende solo del color: la etiqueta dice qué pasó.
   - Sin cajas, sin íconos de check o cruz.
+- Medidas del bloque (escritorio / móvil):
+  - Sección: padding `112px 0 96px` (móvil `72px 20px`). Las dos columnas son flexibles (izquierda base 440 px, formulario base 480 px) con separación 64 px vertical y 96 px horizontal.
+  - H2: margen `20px 0 24px` (móvil `16px 0 18px`); 48 / 34 px, `line-height` 1.05 / 1.08, tracking −.035em.
+  - Texto: 18 / 16 px, `line-height` 1.65 / 1.6.
+  - Correo: 40 / 28 px bajo el texto, padding inferior del subrayado 6 / 5 px. GitHub y LinkedIn: 32 / 24 px bajo el correo, separados 28 / 24 px, 15 px peso 500.
+  - Formulario: separación entre campos 32 / 28 px, con 8 px de padding superior en escritorio y 48 px de margen superior en móvil. Etiqueta y campo separados 6 px.
+  - Campos: 52 px de alto, texto 17 / 16 px, sin padding lateral, línea inferior `line-strong`; la transición del color de línea es de 0.2 s. Mensaje: mínimo 128 / 120 px, padding superior 14 px, `line-height` 1.6, redimensionable en vertical. Los campos no llevan `placeholder`.
+  - Foco en un campo: `outline: none` y línea inferior en `accent` (es el indicador de foco; no se agrega otro contorno). El resto de elementos usa el foco blanco de 2 px con 4 px de separación.
+  - Botón: 48 px de alto en escritorio (52 y a todo el ancho en móvil), padding 0 24 px, radio 6, `gap` de 10 px, Inter 15 px peso 600, fondo `text`, texto `bg`. En escritorio va alineado a la izquierda, con `min-width: 196px` para que no cambie de ancho entre estados.
+  - Región de estado: queda como último hijo del formulario (misma separación que los campos), con padding superior de 20 px; la etiqueta mono 11 px, tracking .14em, y el mensaje a 8 px debajo en 16 px, `line-height` 1.6.
+  - En el tablero de estados los campos se ven más compactos (separación 28 px, mensaje de 104 px) solo para caber en la lámina; en el sitio se usan las medidas de este bloque.
+- Envío: el campo del correo se llama `email` en el HTML (así el servicio lo toma como remitente), los otros dos `name` y `message`, más un campo oculto `_gotcha` como trampa para bots. Se envía con `fetch` (JSON) al endpoint del servicio; el ID viene de `NEXT_PUBLIC_FORMSPREE_ID`. Si la variable no existe, el formulario muestra el estado de error.
 - Hover: el botón circular del hero y los enlaces de contacto y pie siguen el mismo criterio que el resto: el borde o subrayado pasa a `accent` y el texto a `text`.
 - Sin botón de CV por ahora.
 
@@ -250,4 +262,5 @@ Todo formato nuevo en WebP, salvo `og`. Pendiente: la captura del portafolio una
 
 ## Pie
 
+- Medidas: padding `32px 24px` (móvil `28px 20px 36px`); separación 16 px vertical y 32 px horizontal; enlaces separados 28 px (móvil 24 px). El © lleva tracking .06em; los enlaces, 14 px con transición de color de 0.2 s.
 - Hairline arriba y 32 px de padding. Escritorio: "© {año} Ottoniel Menéndez" (año calculado en el build) en mono 12 px `text-muted` a la izquierda; a la derecha GitHub, LinkedIn y "Volver arriba ↑" en Inter 14 px `text-muted` (hover `text`). Móvil: los enlaces arriba y el © debajo.

@@ -120,3 +120,24 @@ export const stack = {
     { label: "Herramientas", items: ["Git", "GitHub", "GitHub Actions", "APIs de Google"] },
   ],
 };
+
+export const contact = {
+  header: { number: "05", label: "Contacto", title: "¿Tienes un proyecto o una oportunidad?" },
+  text: "Escríbeme y te respondo lo antes posible.",
+  form: {
+    name: "Nombre",
+    email: "Correo",
+    message: "Mensaje",
+    submit: "Enviar mensaje",
+    sending: "Enviando",
+    retry: "Reintentar",
+    sent: { label: "Mensaje enviado", text: "¡Gracias! Recibí tu mensaje y te responderé pronto." },
+    // El correo va entre las dos partes, como enlace.
+    error: {
+      label: "No se envió",
+      text: ["No se pudo enviar. Inténtalo de nuevo o escríbeme a ", "."] satisfies [string, string],
+    },
+  },
+};
+
+export const footer = { backToTop: "Volver arriba" };
