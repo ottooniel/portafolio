@@ -153,7 +153,7 @@ Estructura de cada fila (≥ 1024 px): dos columnas, medio a la izquierda (≈ 5
 
 **Columna de medio:**
 - Echo: el tráiler vertical (4:5) dentro del marco 16:10 con fondo `#000` y `object-fit: contain`. El fondo del juego es negro, así que las franjas laterales no se notan. `<video muted loop playsinline preload="none" poster="echo_poster.webp">` con `echo_preview.mp4`. Se reproduce solo mientras está en pantalla (IntersectionObserver) y se pausa al salir; con `prefers-reduced-motion: reduce` se queda en el póster. Sin controles ni sonido; el video es decorativo (`aria-hidden="true"`) porque el texto de la fila ya lo describe. En móvil, el marco pasa a 4:5 y el video ocupa todo el ancho.
-- Este portafolio: miniatura 16:10, radio 6, borde `line`, con la captura del hero del sitio construido (`portafolio.webp`, 1440 × 900; ver "Assets").
+- Este portafolio: miniatura 16:10, radio 6, borde `line`, con la captura del hero del sitio construido (`portafolio.webp`, 1296 × 810; ver "Assets").
 - En ambos, una etiqueta mono arriba a la izquierda sobre fondo `rgba(3,10,26,.85)`, radio 3, p. ej. "01 / ECHO".
 - Casos: caja con borde `line` y fondo `rgba(255,255,255,.02)` (único "contenedor" permitido) con el diagrama centrado, padding 56 px 48 px, alto mínimo 420 px, etiqueta superior "03 / PORTAL 360" y al pie "Diagrama simplificado, sin datos del cliente" en mono 10 px mayúsculas `text-muted`.
 
@@ -185,6 +185,7 @@ HTML y CSS, no imágenes (accesibles y editables).
 - Un solo `h1`. HTML semántico: `header`, `nav`, `section` con `id`, `article`, `dl`.
 - Foco visible: contorno blanco de 2 px con desplazamiento de 4 px en enlaces y botones.
 - Áreas táctiles de al menos 44 px (botón circular, hamburguesa) y 48 px en botones de texto. Los enlaces de texto (nav, pie, menú móvil, "↗") amplían su área de toque a 44 px con un pseudoelemento invisible, sin cambiar su caja ni su aspecto.
+- Enlace "Saltar al contenido": primer elemento enfocable de la página (antes de la nav), con destino el `main` (`id="contenido"`, `tabIndex={-1}` para que reciba el foco). Oculto hasta recibir foco; con foco aparece arriba a la izquierda, fijo a 16 px del borde, por encima de la nav (`z-index` mayor), con el estilo del botón primario (fondo `text`, texto `bg`, radio 6, Inter 15 px peso 600, padding `12px 20px`) y el contorno de foco blanco de 2 px con 4 px de separación. También en la 404.
 - Iconos decorativos con `aria-hidden="true"`. La foto lleva `alt` ("Retrato de Ottoniel Menéndez"); las miniaturas decorativas, `alt=""`.
 - Movimiento: solo las transiciones de hover (≤ 250 ms), el video del hero y el tráiler de Echo; los dos videos respetan `prefers-reduced-motion`.
 - Los números grandes de proyecto son decorativos (`aria-hidden="true"`).
@@ -199,12 +200,12 @@ HTML y CSS, no imágenes (accesibles y editables).
 | `echo.webp` | Versión 16:10 del póster (1600×1000) para usos estáticos, como una futura imagen `og` del proyecto |
 | `cover.webp` | Respaldo para un proyecto nuevo sin captura |
 | `bg.webp` | Sin uso en esta versión; se conserva en el repo por si hace falta |
-| `portafolio.webp` | Captura del hero para la fila "Este portafolio" (1440×900) |
+| `portafolio.webp` | Captura del hero para la fila "Este portafolio" (1296×810, 16:10) |
 | `og.jpg` | Imagen para redes de 1200×630: fondo `hero_poster.webp`, nombre y cargo en Space Grotesk, sin la palabra "Portafolio". JPG estático: `opengraph-image` de Next no pinta el fondo WebP y exporta el archivo sin extensión |
 
 **Imagen `og` (1200 × 630):** fondo `hero_poster.webp` a cubrir, `object-position: right center`, con un degradado de izquierda a derecha de `bg` (hasta el 35 %) a `rgba(3,10,26,.2)`. Contenido alineado a la izquierda, a 72 px del borde y 72 px del borde inferior, anclado abajo: "Ottoniel Menéndez" en Space Grotesk 700, 96 px, `line-height` 1, tracking −.035em, color `text`; debajo, a 20 px, "Full Stack Developer" en Space Grotesk 500, 40 px, color `text-body`. Sin logos, sin la palabra "Portafolio", sin URL y sin adornos. (Esta composición la define el diseño; si el resultado no convence, se ajusta en la revisión del PR.)
 
-**Captura "Este portafolio" (`public/portafolio.webp`, 1440 × 900):** el hero del sitio construido (`npx serve out`) a 1440 px de ancho, 16:10, con `prefers-reduced-motion: reduce` emulado (se ve el póster, sin video), `scrollY = 0` y la nav en su estado sobre el hero (nombre oculto). WebP calidad ~80, idealmente < 150 KB. En `portafolio.mdx`, `width: 1440` y `height: 900`, y se quita el comentario de "mientras no haya captura".
+**Captura "Este portafolio" (`public/portafolio.webp`, 1296 × 810):** solo el hero del sitio construido (`npx serve out`), con la ventana de 1296 × 810 px: el hero mide 810 px de alto mínimo, así que esa ventana da exactamente 16:10 sin que asome la sección siguiente, con `prefers-reduced-motion: reduce` emulado (se ve el póster, sin video), `scrollY = 0` y la nav en su estado sobre el hero (nombre oculto). WebP calidad ~80, idealmente < 150 KB. En `portafolio.mdx`, `width: 1296` y `height: 810`, y se quita el comentario de "mientras no haya captura".
 
 Todo formato nuevo en WebP, salvo `og`.
 

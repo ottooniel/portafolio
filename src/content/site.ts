@@ -14,6 +14,9 @@ export const social = {
   email: "ottonielm64@gmail.com",
 };
 
+// El destino es el <main> de cada página.
+export const skipLink = { label: "Saltar al contenido", href: "#contenido" };
+
 export const navLinks = [
   { label: "Sobre mí", href: "/#sobre-mi" },
   { label: "Proyectos", href: "/#proyectos" },

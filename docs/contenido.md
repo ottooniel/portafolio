@@ -143,6 +143,10 @@ Criterio: solo lo que respalda el perfil (React/JavaScript, trabajo en equipo co
 - Sin CV descargable por ahora.
 - Pie: © {año} Ottoniel Menéndez · GitHub · LinkedIn · Volver arriba ↑ (el año se calcula al hacer el build).
 
+## Accesibilidad
+
+- Enlace para saltar la navegación: `Saltar al contenido` (a `#contenido`, el `main`). Solo se ve con el foco del teclado.
+
 ## Página 404
 
 - Número decorativo: 404

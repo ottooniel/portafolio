@@ -28,7 +28,7 @@ export default function NotFound() {
           className="absolute inset-0 -z-10 bg-linear-to-b from-bg/50 via-bg/75 via-45% to-bg to-75% md:bg-linear-to-r md:from-bg md:from-30% md:via-bg/60 md:via-65% md:to-bg/20 md:to-100%"
         />
 
-        <main className="site-container flex flex-1 flex-col justify-end pt-10 pb-12 md:justify-center md:pt-[72px] md:pb-24">
+        <main id="contenido" tabIndex={-1} className="site-container outline-none flex flex-1 flex-col justify-end pt-10 pb-12 md:justify-center md:pt-[72px] md:pb-24">
           <p
             aria-hidden="true"
             className="text-outline font-display text-[132px] leading-[0.8] font-semibold tracking-[-0.04em] md:text-[clamp(140px,17vw,240px)]"
