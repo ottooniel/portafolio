@@ -24,6 +24,15 @@
   --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+
+  /* Anillo del botón mientras se envía el formulario. */
+  --animate-loader: loader 0.8s linear infinite;
+
+  @keyframes loader {
+    to {
+      transform: rotate(360deg);
+    }
+  }
 }
 
 @layer base {

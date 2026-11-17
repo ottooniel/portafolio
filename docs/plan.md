@@ -14,7 +14,7 @@ Aprobado por Ottoniel el 2026-11-13. Si hay que cambiar el orden o el alcance de
 - [x] Fase 3 — Sobre mí + Cómo trabajo
 - [x] Fase 4 — Proyectos
 - [x] Fase 5 — Experiencia + Stack
-- [ ] Fase 6 — Contacto + pie
+- [x] Fase 6 — Contacto + pie
 - [ ] Fase 7 — SEO, accesibilidad, og, 404 y pulido
 - [ ] Fase 8 — Despliegue y release v1.0.0
 
@@ -169,7 +169,7 @@ Razón: `CLAUDE.md` exige "vista previa por PR" y revisión visual en cada fase;
 - **Archivos:** `src/components/Contact.tsx`, `ContactForm.tsx` (`"use client"`), `Footer.tsx`; `.env.example` (`NEXT_PUBLIC_FORMSPREE_ID=`); `src/content/site.ts`; `page.tsx`.
 - **Criterios de aceptación:**
   - Cada campo con `<label>` asociado, `required`, `type="email"` y `autocomplete` (`name`, `email`); validación nativa del navegador; campo trampa oculto (`_gotcha`) contra spam.
-  - Campos sin caja: solo línea inferior `line-strong`, 52 px de alto (mensaje ≥ 128 px), línea `accent` con foco además del contorno de foco.
+  - Campos sin caja: solo línea inferior `line-strong`, 52 px de alto (mensaje ≥ 128 px), línea `accent` con foco (es el indicador de foco del campo; sin otro contorno).
   - Enviando: `aria-busy="true"`, campos de solo lectura al 60 %, botón deshabilitado (`cursor: progress`) con el texto `Enviando` y el anillo SVG de 16 px en lugar de la flecha (no gira con `prefers-reduced-motion`); `min-width: 196px` para que el botón no cambie de ancho. Sin doble envío.
   - Enviado: campos vacíos y región `role="status"` `aria-live="polite"` con hairline, etiqueta `MENSAJE ENVIADO` en `accent` y el texto de éxito.
   - Error (fallo de red o respuesta no-OK): los campos conservan lo escrito, el botón dice `Reintentar →`, y la misma región muestra `NO SE ENVIÓ` en `danger` con el correo como enlace `mailto:`. Sin cajas ni iconos; el estado no depende solo del color.

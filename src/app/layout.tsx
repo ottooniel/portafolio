@@ -31,7 +31,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="es"
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
-      <body>{children}</body>
+      {/* `#inicio` es el destino de "Volver arriba". */}
+      <body id="inicio">{children}</body>
     </html>
   );
 }
