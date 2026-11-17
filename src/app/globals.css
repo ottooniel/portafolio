@@ -53,6 +53,12 @@
     outline-offset: 4px;
   }
 
+  /* Tailwind 4 ya no pone el cursor de mano en los botones. */
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]) {
+    cursor: pointer;
+  }
+
   /* Las anclas quedan debajo de la barra fija (80 px, móvil 64 px). */
   [id] {
     scroll-margin-top: 64px;
