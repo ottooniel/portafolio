@@ -20,11 +20,13 @@ type Copy = {
 const labelClass = "font-mono text-[11px] font-medium tracking-[0.14em] uppercase";
 // Sin caja: solo la línea inferior, que pasa a `accent` con foco (es el indicador de foco del campo).
 const fieldClass =
-  "w-full rounded-none border-b border-line-strong bg-transparent text-base text-text outline-none transition-[border-color,opacity] duration-200 read-only:opacity-60 focus:border-accent motion-reduce:transition-none md:text-[17px]";
+  "w-full rounded-none border-b border-line-strong bg-transparent text-base text-text outline-none transition-colors duration-200 focus:border-accent motion-reduce:transition-none md:text-[17px]";
 
 export default function ContactForm({ copy, mailto }: { copy: Copy; mailto: string }) {
   const [status, setStatus] = useState<Status>("idle");
   const sending = status === "sending";
+  // Mientras se envía, el campo entero (etiqueta y línea incluidas) se atenúa.
+  const groupClass = `flex flex-col gap-1.5 transition-opacity duration-200 motion-reduce:transition-none ${sending ? "opacity-60" : ""}`;
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -50,7 +52,7 @@ export default function ContactForm({ copy, mailto }: { copy: Copy; mailto: stri
   return (
     <form onSubmit={handleSubmit} aria-busy={sending} className="relative">
       <div className="flex flex-col gap-7 md:gap-8">
-        <div className="flex flex-col gap-1.5">
+        <div className={groupClass}>
           <label htmlFor="contact-name" className={`${labelClass} text-text-muted`}>
             {copy.name}
           </label>
@@ -64,7 +66,7 @@ export default function ContactForm({ copy, mailto }: { copy: Copy; mailto: stri
             className={`${fieldClass} h-[52px]`}
           />
         </div>
-        <div className="flex flex-col gap-1.5">
+        <div className={groupClass}>
           <label htmlFor="contact-email" className={`${labelClass} text-text-muted`}>
             {copy.email}
           </label>
@@ -78,7 +80,7 @@ export default function ContactForm({ copy, mailto }: { copy: Copy; mailto: stri
             className={`${fieldClass} h-[52px]`}
           />
         </div>
-        <div className="flex flex-col gap-1.5">
+        <div className={groupClass}>
           <label htmlFor="contact-message" className={`${labelClass} text-text-muted`}>
             {copy.message}
           </label>
@@ -102,21 +104,20 @@ export default function ContactForm({ copy, mailto }: { copy: Copy; mailto: stri
         <button
           type="submit"
           disabled={sending}
-          className={`${buttonClass} w-full justify-center disabled:cursor-progress max-md:min-h-[52px] md:w-auto md:min-w-[196px] md:self-start`}
+          className={`${buttonClass} w-full justify-center disabled:cursor-progress disabled:gap-3 max-md:min-h-[52px] md:w-auto md:min-w-[196px] md:self-start`}
         >
-          {sending ? copy.sending : status === "error" ? copy.retry : copy.submit}
-          {sending ? (
+          {sending && (
             <svg
               aria-hidden="true"
               viewBox="0 0 16 16"
               className="size-4 animate-loader fill-none stroke-[1.75] motion-reduce:animate-none"
             >
-              <circle cx="8" cy="8" r="7" className="stroke-bg/20" />
-              <path d="M8 1a7 7 0 0 1 7 7" strokeLinecap="round" className="stroke-bg" />
+              <circle cx="8" cy="8" r="6.5" className="stroke-bg/20" />
+              <path d="M8 1.5a6.5 6.5 0 0 1 6.5 6.5" strokeLinecap="round" className="stroke-bg" />
             </svg>
-          ) : (
-            <span aria-hidden="true">→</span>
           )}
+          {sending ? copy.sending : status === "error" ? copy.retry : copy.submit}
+          {!sending && <span aria-hidden="true">→</span>}
         </button>
       </div>
       {/* La región existe desde el inicio: así el lector de pantalla anuncia el mensaje cuando aparece. */}

@@ -26,7 +26,7 @@ export default function NavBrand({ name }: { name: string }) {
     <Link
       ref={ref}
       href="/"
-      className="font-display text-[17px] font-semibold text-text transition-[opacity,visibility] duration-200 over-hero:invisible over-hero:opacity-0 motion-reduce:transition-none md:text-[18px]"
+      className="tap-target font-display text-[17px] font-semibold text-text transition-[opacity,visibility] duration-200 over-hero:invisible over-hero:opacity-0 motion-reduce:transition-none md:text-[18px]"
     >
       {name}
     </Link>

@@ -51,7 +51,7 @@ export default function Experience() {
             <li key={c.name} className="py-3 first:pt-0 last:pb-0 md:py-4 sm:flex sm:items-baseline sm:justify-between sm:gap-6">
               <span className="block text-base text-text">
                 {c.url ? (
-                  <TextLink href={c.url} external className="text-text">
+                  <TextLink href={c.url} external className="inline-block text-text">
                     {c.name}
                   </TextLink>
                 ) : (

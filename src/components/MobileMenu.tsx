@@ -37,7 +37,7 @@ export default function MobileMenu() {
         className="m-0 h-dvh max-h-none w-full max-w-none overflow-y-auto bg-bg p-0 text-text md:hidden"
       >
         <div className="flex h-16 items-center justify-between border-b border-white/8 px-5">
-          <Link href="/" onClick={close} className="font-display text-[17px] font-semibold">
+          <Link href="/" onClick={close} className="tap-target font-display text-[17px] font-semibold">
             {name}
           </Link>
           <button
@@ -67,7 +67,8 @@ export default function MobileMenu() {
         </nav>
 
         <div className="flex flex-col gap-4 px-5 pt-6 pb-10">
-          <a href={`mailto:${social.email}`} className="text-base font-medium">
+          {/* El área de toque del correo sube 8 px para no pisar la de los enlaces de abajo. */}
+          <a href={`mailto:${social.email}`} className="tap-target text-base font-medium after:-mt-2">
             {social.email}
           </a>
           <div className="flex gap-6 font-mono text-xs font-medium tracking-[0.08em] text-text-muted">
@@ -75,7 +76,7 @@ export default function MobileMenu() {
               ["GITHUB", social.github],
               ["LINKEDIN", social.linkedin],
             ].map(([label, href]) => (
-              <a key={href} href={href} target="_blank" rel="noopener noreferrer" className="hover:text-text">
+              <a key={href} href={href} target="_blank" rel="noopener noreferrer" className="tap-target hover:text-text">
                 {label}
                 <span aria-hidden="true"> ↗</span>
                 <span className="sr-only"> (abre en una pestaña nueva)</span>

@@ -59,12 +59,12 @@
     cursor: pointer;
   }
 
-  /* Las anclas quedan debajo de la barra fija (80 px, móvil 64 px). */
-  [id] {
-    scroll-margin-top: 64px;
+  /* Las anclas y los elementos que reciben foco quedan debajo de la barra fija (80 px, móvil 64 px). */
+  html {
+    scroll-padding-top: 64px;
 
     @media (width >= 48rem) {
-      scroll-margin-top: 80px;
+      scroll-padding-top: 80px;
     }
   }
 
@@ -98,6 +98,21 @@
 
   @media (width >= 48rem) {
     padding-inline: 24px;
+  }
+}
+
+/* Área de toque de al menos 44 × 44 px para enlaces de texto, sin cambiar su aspecto ni su caja. */
+@utility tap-target {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: max(100%, 44px);
+    height: 44px;
+    translate: -50% -50%;
   }
 }
 

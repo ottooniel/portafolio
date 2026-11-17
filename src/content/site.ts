@@ -2,11 +2,20 @@
 
 export const name = "Ottoniel Menéndez";
 
+export const meta = {
+  title: "Ottoniel Menéndez | Full Stack Developer",
+  description:
+    "Portafolio de Ottoniel Menéndez, Full Stack Developer en Guatemala. Proyectos con React, Node.js, MongoDB y MySQL.",
+};
+
 export const social = {
   github: "https://github.com/ottooniel",
   linkedin: "https://www.linkedin.com/in/ottoniel-men%C3%A9ndez/",
   email: "ottonielm64@gmail.com",
 };
+
+// El destino es el <main> de cada página.
+export const skipLink = { label: "Saltar al contenido", href: "#contenido" };
 
 export const navLinks = [
   { label: "Sobre mí", href: "/#sobre-mi" },
@@ -152,3 +161,16 @@ export const contact = {
 };
 
 export const footer = { backToTop: "Volver arriba" };
+
+export const notFound = {
+  tabTitle: "Página no encontrada | Ottoniel Menéndez",
+  number: "404",
+  label: "Ruta no encontrada",
+  title: "Página no encontrada",
+  text: "La página que buscas no existe o cambió de lugar.",
+  back: { label: "Volver al inicio", href: "/" },
+  links: [
+    { label: "Ver proyectos", href: "/#proyectos" },
+    { label: "Contactar", href: "/#contacto" },
+  ],
+};
