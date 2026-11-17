@@ -39,23 +39,20 @@ export const hero = {
   location: "Guatemala",
 };
 
+const niuUrl = "https://niu.solutions/";
+
 export const about = {
   header: { number: "01", label: "Perfil", title: "Sobre mí" },
   photoAlt: "Retrato de Ottoniel Menéndez",
   paragraphs: [
-    [
-      "Soy desarrollador full stack en Guatemala y estudio Ingeniería en Sistemas de Información y Ciencias de la Computación en la Universidad Mariano Gálvez. Desde diciembre de 2024 trabajo en ",
-      { em: "NIU Solutions" },
-      " construyendo portales web para el sector financiero sobre HubSpot CMS, con JavaScript, funciones serverless y datos en HubDB.",
-    ],
-    [
-      "Me gusta cuidar el producto completo: desde la pantalla que usa el agente hasta cómo el área de negocio puede cambiarla sin tocar código.",
-    ],
-  ] satisfies RichText[],
+    "Soy desarrollador full stack. Construyo portales web para el sector financiero sobre HubSpot CMS, con JavaScript, funciones serverless y datos en HubDB.",
+    "Me gusta cuidar el producto completo: desde la pantalla que usa el agente hasta cómo el área de negocio puede cambiarla sin tocar código.",
+  ],
+  // `link` va antes del valor, como enlace externo.
   facts: [
     { label: "UBICACIÓN", value: "Guatemala" },
     { label: "ESTUDIOS", value: "UMG (en curso)" },
-    { label: "TRABAJO", value: "NIU Solutions desde dic. 2024" },
+    { label: "TRABAJO", link: { label: "NIU Solutions", href: niuUrl }, value: "desde dic. 2024" },
   ],
 };
 
@@ -88,6 +85,7 @@ export const experience = {
     mode: "Híbrido",
     role: "Ingeniero de software",
     company: "NIU Solutions",
+    companyUrl: niuUrl,
     bullets: [
       "Portales web para el sector financiero sobre HubSpot CMS (HubL, JavaScript, funciones serverless y HubDB).",
       "Portal 360: desarrollé la mayor parte, del frontend a la integración con funciones serverless.",
@@ -101,12 +99,25 @@ export const experience = {
   },
   certifications: {
     label: "Certificaciones",
+    // Con `url`, el nombre enlaza a la credencial pública.
     items: [
-      { name: "Middle Developer Front End JavaScript - React", issuer: "ADA School" },
+      {
+        name: "Middle Developer Front End JavaScript - React",
+        issuer: "ADA School",
+        url: "https://innova.learn.ada-school.org/certifications/682beee15399469ed776b1b1",
+      },
       { name: "Registered Scrum Basics", issuer: "Scrum Inc." },
-      { name: "Desarrollo de software con Claude Code", issuer: "DataCamp" },
-      { name: "Software Development with Cursor", issuer: "DataCamp" },
-    ],
+      {
+        name: "Desarrollo de software con Claude Code",
+        issuer: "DataCamp",
+        url: "https://www.datacamp.com/completed/statement-of-accomplishment/course/1fffbd277d68e277f0eb9a760f487241b6fa2984",
+      },
+      {
+        name: "Software Development with Cursor",
+        issuer: "DataCamp",
+        url: "https://www.datacamp.com/completed/statement-of-accomplishment/course/14f5c07fa48141b6cc8fdf45686c1dd4b2bf226a",
+      },
+    ] satisfies { name: string; issuer: string; url?: string }[],
   },
 };
 

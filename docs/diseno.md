@@ -66,7 +66,7 @@ Escala (escritorio / móvil):
 | Etiquetas mono | 11 px, `.12em`–`.14em` | 11 px | 500 |
 | Número grande de proyecto | 72 px, solo trazo 1 px `outline-num` | 56 px | 600 |
 
-Énfasis por color, no por negrita: dentro de texto `text-body`, algunas palabras van en `text`. En la frase del hero: React, Node.js, MongoDB y MySQL. En Sobre mí: solo "NIU Solutions".
+Énfasis por color, no por negrita: dentro de texto `text-body`, algunas palabras van en `text`. En la frase del hero: React, Node.js, MongoDB y MySQL. En Sobre mí no hay palabras resaltadas.
 
 ## Espaciado y forma
 
@@ -122,7 +122,7 @@ Escala (escritorio / móvil):
 ## Sobre mí
 
 - Escritorio: foto a la izquierda (400 px, proporción 4:5, `object-position: top`, radio 6, borde `rgba(255,255,255,.12)`, sin brillo) y texto a la derecha; separación 96 px, alineados arriba. Móvil: título, foto a todo el ancho y texto debajo.
-- Dos párrafos de `contenido.md`. Debajo, lista de definiciones con hairlines (arriba de cada fila y abajo de la última): etiqueta mono a 140 px (UBICACIÓN, ESTUDIOS, TRABAJO) y valor en `text` 16 px. Sin iconos.
+- Dos párrafos de `contenido.md`. Debajo, lista de definiciones con hairlines (arriba de cada fila y abajo de la última): etiqueta mono a 140 px (UBICACIÓN, ESTUDIOS, TRABAJO) y valor en `text` 16 px (en TRABAJO, "NIU Solutions ↗" es un enlace de texto externo seguido de "desde dic. 2024" en `text`). Sin iconos.
 - Disposición en escritorio (≥ 1024 px): la foto ocupa la columna izquierda desde el borde superior de la sección. El rótulo, el H2, los párrafos y la lista de definiciones van todos en la columna derecha, debajo de la parte superior de la foto (el encabezado **no** va encima de las dos columnas). Móvil y tablet: rótulo y H2, foto, párrafos y lista, en ese orden.
 - Medidas (escritorio / móvil):
   - Rótulo → H2: 20 / 16 px. H2 → primer párrafo: 36 / 32 px. En móvil, foto → primer párrafo: 32 px. El espacio bajo el H2 de las demás secciones lo define cada sección (Proyectos usa 72 / 48 px), así que el encabezado recibe ese margen como parámetro.
@@ -206,9 +206,9 @@ Todo formato nuevo en WebP, salvo `og`. Pendiente: la captura del portafolio una
 ## Experiencia (`[ 03 ] Trayectoria`, fondo `bg`)
 
 - Filas con hairline arriba y 40 px de padding vertical (móvil 28 px). Escritorio: columna izquierda fija de 240 px y contenido a la derecha, separación 48 px.
-- Puesto: a la izquierda, fechas en mono 11 px mayúsculas (`DIC. 2024 — ACTUALIDAD` en `text`, `HÍBRIDO` debajo en `text-muted`). A la derecha, el cargo como H3 (Space Grotesk 600, 28 px; móvil 24), la empresa en `text-muted` 16 px y las viñetas en `text-body` 16 px (marcador `text-muted`, máx. 720 px).
+- Puesto: a la izquierda, fechas en mono 11 px mayúsculas (`DIC. 2024 — ACTUALIDAD` en `text`, `HÍBRIDO` debajo en `text-muted`). A la derecha, el cargo como H3 (Space Grotesk 600, 28 px; móvil 24), la empresa en `text-muted` 16 px (enlace de texto externo "NIU Solutions ↗"; el hover pasa el texto a `text` y el subrayado a `accent`) y las viñetas en `text-body` 16 px (marcador `text-muted`, máx. 720 px).
 - Educación: etiqueta mono a la izquierda; a la derecha la carrera en Space Grotesk 600 de 20 px y "Universidad Mariano Gálvez de Guatemala · En curso" en `text-muted`.
-- Certificaciones: etiqueta mono a la izquierda; a la derecha una lista con separadores muy tenues (`rgba(255,255,255,.07)`): nombre en `text` 16 px a la izquierda y emisor en mono 12 px `text-muted` a la derecha (en móvil, el emisor debajo). Sin enlaces a las credenciales.
+- Certificaciones: etiqueta mono a la izquierda; a la derecha una lista con separadores muy tenues (`rgba(255,255,255,.07)`): nombre en `text` 16 px a la izquierda y emisor en mono 12 px `text-muted` a la derecha (en móvil, el emisor debajo). Cuando la credencial tiene página pública, el nombre es un enlace de texto externo (subrayado fino, `↗` al final, hover como los demás enlaces); sin página pública queda en texto plano. Nunca PDF en el repo.
 - Medidas (escritorio / móvil):
   - H2 → primera fila: 64 / 40 px.
   - Puesto: empresa a 8 px bajo el cargo; la lista de viñetas a 24 px de la empresa, con 12 px entre viñetas (máx. 720 px) y sangría de 18 px más 6 / 4 px de padding en cada ítem. Fechas y modalidad separadas 8 px.
