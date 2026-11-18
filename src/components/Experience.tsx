@@ -3,7 +3,7 @@ import Section from "./Section";
 import SectionHeader from "./SectionHeader";
 import TextLink from "./TextLink";
 
-const row = "border-t border-line py-7 md:py-10 lg:grid lg:grid-cols-[240px_1fr] lg:gap-12";
+const row = "reveal border-t border-line py-7 md:py-10 lg:grid lg:grid-cols-[240px_1fr] lg:gap-12";
 const label = "mb-4 font-mono text-[11px] font-medium tracking-[0.14em] text-text-muted uppercase lg:mb-0";
 
 export default function Experience() {

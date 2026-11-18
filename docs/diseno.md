@@ -71,7 +71,7 @@ Escala (escritorio / móvil):
 ## Espaciado y forma
 
 - Contenedor: máx. 1200 px, centrado, padding lateral 24 px (móvil 20 px).
-- Padding vertical de sección: 112 px (móvil 72 px). Cada sección empieza con `border-top: 1px solid line`.
+- Padding vertical de sección: 112 px (móvil 72 px). Cada sección empieza con un hairline superior de 1 px en `line` (`.section-line`; ver "Movimiento al hacer scroll").
 - Fondo alterno: Sobre mí y Contacto en `bg`; Proyectos y Stack en `bg-alt`. Experiencia en `bg`.
 - Radios: botón 6 px, foto 6 px, nodos de diagrama 4 px, botón circular 50 %.
 - Cada sección abre con un rótulo mono `[ 0N ]  Nombre` (el número en `accent`, el texto en `text-muted`) y debajo el H2: `[ 01 ] Perfil` / Sobre mí, `[ 02 ] Trabajo seleccionado` / Proyectos, `[ 03 ] Trayectoria` / Experiencia, `[ 04 ] Herramientas` / Stack, `[ 05 ] Contacto` / el título de contacto de `contenido.md`.
@@ -187,8 +187,20 @@ HTML y CSS, no imágenes (accesibles y editables).
 - Áreas táctiles de al menos 44 px (botón circular, hamburguesa) y 48 px en botones de texto. Los enlaces de texto (nav, pie, menú móvil, "↗") amplían su área de toque a 44 px con un pseudoelemento invisible, sin cambiar su caja ni su aspecto.
 - Enlace "Saltar al contenido": primer elemento enfocable de la página (antes de la nav), con destino el `main` (`id="contenido"`, `tabIndex={-1}` para que reciba el foco). Oculto hasta recibir foco; con foco aparece arriba a la izquierda, fijo a 16 px del borde, por encima de la nav (`z-index` mayor), con el estilo del botón primario (fondo `text`, texto `bg`, radio 6, Inter 15 px peso 600, padding `12px 20px`) y el contorno de foco blanco de 2 px con 4 px de separación. También en la 404.
 - Iconos decorativos con `aria-hidden="true"`. La foto lleva `alt` ("Retrato de Ottoniel Menéndez"); las miniaturas decorativas, `alt=""`.
-- Movimiento: solo las transiciones de hover (≤ 250 ms), el video del hero y el tráiler de Echo; los dos videos respetan `prefers-reduced-motion`.
+- Movimiento: solo las transiciones de hover (≤ 250 ms), el video del hero, el tráiler de Echo y, al hacer scroll, el revelado, el escalonado de Cómo trabajo y el trazo del hairline de cada sección (ver "Movimiento al hacer scroll"). Los videos y las animaciones de scroll respetan `prefers-reduced-motion: reduce`: con esa preferencia, los videos quedan en su póster y el contenido se muestra estático y completo.
 - Los números grandes de proyecto son decorativos (`aria-hidden="true"`).
+
+### Movimiento al hacer scroll
+
+Solo CSS (scroll-driven animations), sin JS ni dependencias, y solo con `opacity` y `transform` (sin CLS ni efecto en el LCP). Todo va dentro de `@supports (animation-timeline: view())` y `@media (prefers-reduced-motion: no-preference)`: si falla cualquiera de las dos condiciones, nada queda oculto.
+
+- **Revelado (`.reveal`):** fundido de 0 a 1 y 24 px hacia arriba al entrar en pantalla, con `animation-timeline: view()` y rango `entry 0%` → `cover 25%`. Se aplica a `SectionHeader` (las cinco secciones), a cada fila de proyecto (`article`), al `h3` y a los cuatro puntos de Cómo trabajo, a cada fila de Experiencia (puesto, educación, certificaciones) y a cada fila de Stack.
+- **Escalonado (`.reveal-stagger`):** en la cuadrícula de Cómo trabajo, el punto *n* (0–3) empieza y termina su revelado `n × 8 %` más tarde. Solo desde 1280 px, donde la cuadrícula tiene cuatro columnas; con menos columnas, sin retraso. Experiencia y Stack no se escalonan.
+- **Hairline que se dibuja (`.section-line`):** el hairline superior de cada sección es un `::before` de 1 px que crece de izquierda a derecha (`scale` de 0 a 1 en X) con la línea de tiempo de la sección (`view-timeline: --sec block`), rango `entry 0px` → `entry 240px`. Sin soporte, es una línea fija de 1 px. Los hairlines de las filas no se animan.
+- **Sin movimiento al hacer scroll:** hero, nav, pie, página 404, columna de texto y formulario de Contacto (de Contacto solo se revela el `SectionHeader`), región de estado del formulario. Sin parallax, números de proyecto que se desplazan, barra de progreso, scroll-snap, secciones fijas, texto partido en letras, contadores ni `will-change`.
+- Al saltar a una sección con las anclas de la nav, su encabezado y su hairline ya se ven completos.
+
+Soporte: Chrome/Edge 115+, Safari 26+, Firefox 159+ (≈ 89 % de usuarios, Baseline 2026). Sin soporte, el contenido se muestra estático y completo gracias a `@supports`.
 
 ## Assets
 

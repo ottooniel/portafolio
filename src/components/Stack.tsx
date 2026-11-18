@@ -11,7 +11,7 @@ export default function Stack() {
         {stack.rows.map((row) => (
           <div
             key={row.label}
-            className="border-t border-line py-5 md:py-7 lg:grid lg:grid-cols-[240px_1fr] lg:items-baseline lg:gap-12"
+            className="reveal border-t border-line py-5 md:py-7 lg:grid lg:grid-cols-[240px_1fr] lg:items-baseline lg:gap-12"
           >
             <dt className="font-mono text-[11px] font-medium tracking-[0.14em] text-text-muted uppercase">
               {row.label}

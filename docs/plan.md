@@ -16,6 +16,7 @@ Aprobado por Ottoniel el 2026-11-13. Si hay que cambiar el orden o el alcance de
 - [x] Fase 5 — Experiencia + Stack
 - [x] Fase 6 — Contacto + pie
 - [x] Fase 7 — SEO, accesibilidad, og, 404 y pulido
+- [x] Fase 7.1 — Animaciones al hacer scroll
 - [ ] Fase 8 — Despliegue y release v1.0.0
 
 ## Reglas comunes a todas las fases
@@ -192,11 +193,26 @@ Razón: `CLAUDE.md` exige "vista previa por PR" y revisión visual en cada fase;
   - `out/404.html` existe: misma nav (con el nombre siempre visible y fondo `bg`), pie mínimo, un solo `h1` "Página no encontrada", título de pestaña propio, "404" decorativo solo trazo con `aria-hidden`, fondo fijo `hero_poster.webp` (sin video) con su degradado, botón "← Volver al inicio" a `/` y enlaces a `/#proyectos` y `/#contacto`. La línea `GET {ruta} → 404` aparece solo cuando hay ruta y no desborda con rutas largas. Revisada a 1440 y 390 (botón a todo el ancho en móvil).
   - `out/index.html` con `og:title`, `og:description`, `og:image` (URL absoluta), `twitter:card=summary_large_image` y sigue con `noindex`.
   - No hay `robots.txt` con `Disallow` (bloquearía que los buscadores lean el `noindex`).
-  - Lighthouse ≥ 90 en las cuatro categorías en el CI; cero fallos automáticos de accesibilidad.
+  - Lighthouse ≥ 90 en las cuatro categorías en el CI; cero fallos automáticos de accesibilidad, salvo falsos positivos documentados por estados transitorios de animación (fase 7.1).
   - Pasada manual: un solo `h1`, orden de encabezados, todo alcanzable y operable con teclado, foco siempre visible, áreas táctiles ≥ 44 px, contraste según `diseno.md`, sin scroll horizontal a 320 px, zoom al 200 % usable, ningún movimiento con `prefers-reduced-motion` salvo transiciones ≤ 250 ms.
   - Imágenes con `width`/`height` (CLS ≈ 0); ningún asset nuevo fuera de WebP salvo la `og`.
   - Los cuatro puntos de "Cómo trabajo" son verdad en el repo (ramas + PR, commits convencionales, CI activo).
 - **Verificación:** comandos comunes; `npx serve out` y revisar el build estático real (no solo `dev`); abrir una ruta inexistente en la vista previa de Vercel y comprobar la 404; Lighthouse en DevTools móvil y escritorio; inspección de `<head>`; recorrido con teclado y lector de pantalla (NVDA) de punta a punta; vista previa de Vercel en un teléfono real.
+
+## Fase 7.1 — Animaciones al hacer scroll
+
+- **Objetivo:** dar movimiento sobrio al recorrer la página, sin JS ni dependencias.
+- **Entra:** tres utilidades CSS de scroll-driven animations en `globals.css` (`reveal`, `reveal-stagger`, `section-line`) aplicadas según `diseno.md` → "Movimiento al hacer scroll"; el `border-top` de `Section` pasa a `.section-line`.
+- **No entra:** hero, nav, pie, 404, formulario de contacto; parallax, barra de progreso, scroll-snap, JS de animación.
+- **Rama / PR:** `feat/animaciones-scroll` · `feat: agregar animaciones al hacer scroll`
+- **Archivos:** `src/app/globals.css`, `Section.tsx`, `SectionHeader.tsx`, `ProjectRow.tsx`, `HowIWork.tsx`, `Experience.tsx`, `Stack.tsx`; `docs/diseno.md`, `docs/plan.md`.
+- **Criterios de aceptación:**
+  - Con soporte: revelado, escalonado (solo ≥ 1280 px) y hairline que se dibuja.
+  - Al usar cada ancla de la nav, el encabezado y el hairline de la sección destino se ven completos.
+  - Con `prefers-reduced-motion: reduce` o sin soporte: todo estático y completo.
+  - CLS sin cambio y LCP igual o mejor; Lighthouse ≥ 90 en las cuatro categorías. El único fallo automático admitido es el contraste del encabezado de Sobre mí medido a mitad de su revelado (falso positivo).
+  - El tráiler de Echo sigue reproduciéndose solo en pantalla.
+- **Verificación:** comandos comunes; navegador a 390, 768, 1024, 1280 y 1440 px; emular movimiento reducido; Lighthouse antes y después.
 
 ## Fase 8 — Despliegue y release v1.0.0
 

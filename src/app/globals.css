@@ -126,3 +126,75 @@
     -webkit-text-stroke-color: var(--color-accent);
   }
 }
+
+/*
+ * Movimiento al hacer scroll, solo con CSS y sobre opacity/transform.
+ * Sin soporte de scroll-driven animations o con movimiento reducido, todo queda estático y visible.
+ * `reveal`: fundido y 24 px hacia arriba al entrar. `--i` retrasa cada hijo de `reveal-stagger`.
+ * `section-line`: el hairline superior de la sección se dibuja de izquierda a derecha.
+ */
+@keyframes reveal {
+  from {
+    opacity: 0;
+    translate: 0 24px;
+  }
+}
+
+@keyframes draw-line {
+  from {
+    scale: 0 1;
+  }
+}
+
+.reveal {
+  --i: 0;
+}
+
+.section-line {
+  position: relative;
+}
+
+.section-line::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: var(--color-line);
+  transform-origin: left center;
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry calc(var(--i) * 8%) cover calc(25% + var(--i) * 8%);
+    }
+
+    /* El ::before mide 1 px: su línea de tiempo es la de la sección completa. */
+    .section-line {
+      view-timeline: --sec block;
+    }
+
+    .section-line::before {
+      animation: draw-line linear both;
+      animation-timeline: --sec;
+      animation-range: entry 0px entry 240px;
+    }
+  }
+}
+
+/* Desde 1280 px la cuadrícula tiene 4 columnas; con menos, el retraso no corresponde a una fila. */
+@media (width >= 80rem) {
+  .reveal-stagger > .reveal:nth-child(2) {
+    --i: 1;
+  }
+
+  .reveal-stagger > .reveal:nth-child(3) {
+    --i: 2;
+  }
+
+  .reveal-stagger > .reveal:nth-child(4) {
+    --i: 3;
+  }
+}
