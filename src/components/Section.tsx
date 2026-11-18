@@ -14,7 +14,7 @@ export default function Section({
     <section
       id={id}
       aria-labelledby={`${id}-title`}
-      className={`border-t border-line py-[72px] md:py-28 ${alt ? "bg-bg-alt" : "bg-bg"} ${className}`}
+      className={`section-line py-[72px] md:py-28 ${alt ? "bg-bg-alt" : "bg-bg"} ${className}`}
     >
       <div className="site-container">{children}</div>
     </section>

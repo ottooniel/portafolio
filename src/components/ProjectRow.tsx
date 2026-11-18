@@ -59,7 +59,7 @@ export default function ProjectRow({ meta, children }: { meta: ProjectMeta; chil
   return (
     <article
       aria-labelledby={titleId}
-      className="group grid gap-[18px] border-t border-line py-12 md:gap-12 md:py-[72px] lg:grid-cols-[55fr_45fr] lg:items-start xl:gap-[72px]"
+      className="reveal group grid gap-[18px] border-t border-line py-12 md:gap-12 md:py-[72px] lg:grid-cols-[55fr_45fr] lg:items-start xl:gap-[72px]"
     >
       <Media meta={meta} />
 

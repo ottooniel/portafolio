@@ -16,7 +16,7 @@ export default function SectionHeader({
   titleClassName?: string;
 }) {
   return (
-    <header className={className}>
+    <header className={`reveal ${className ?? ""}`}>
       <p className="font-mono text-[11px] font-medium tracking-[0.14em] whitespace-pre text-text-muted uppercase">
         <span className="text-accent">[ {number} ]</span>
         {"  "}
