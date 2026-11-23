@@ -213,6 +213,7 @@ Soporte: Chrome/Edge 115+, Safari 26+, Firefox 159+ (≈ 89 % de usuarios, Basel
 | `cover.webp` | Respaldo para un proyecto nuevo sin captura |
 | `bg.webp` | Sin uso en esta versión; se conserva en el repo por si hace falta |
 | `portafolio.webp` | Captura del hero para la fila "Este portafolio" (1296×810, 16:10) |
+| `banguat-mcp.webp` | Captura de Claude Code usando `convertir_monto` para la fila "banguat-mcp" (1296×810, 16:10) |
 | `og.jpg` | Imagen para redes de 1200×630: fondo `hero_poster.webp`, nombre y cargo en Space Grotesk, sin la palabra "Portafolio". JPG estático: `opengraph-image` de Next no pinta el fondo WebP y exporta el archivo sin extensión |
 
 **Imagen `og` (1200 × 630):** fondo `hero_poster.webp` a cubrir, `object-position: right center`, con un degradado de izquierda a derecha de `bg` (hasta el 35 %) a `rgba(3,10,26,.2)`. Contenido alineado a la izquierda, a 72 px del borde y 72 px del borde inferior, anclado abajo: "Ottoniel Menéndez" en Space Grotesk 700, 96 px, `line-height` 1, tracking −.035em, color `text`; debajo, a 20 px, "Full Stack Developer" en Space Grotesk 500, 40 px, color `text-body`. Sin logos, sin la palabra "Portafolio", sin URL y sin adornos. (Esta composición la define el diseño; si el resultado no convence, se ajusta en la revisión del PR.)

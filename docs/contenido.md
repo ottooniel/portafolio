@@ -74,7 +74,7 @@ Servidor MCP que conecta agentes de IA como Claude y Cursor con el tipo de cambi
 
 - Arquitectura: Servidor MCP por stdio con seis herramientas · cliente SOAP del web service del Banguat con caché · conversión a quetzales de las monedas del catálogo
 - Stack: TypeScript, Node.js, MCP SDK, Zod, Vitest, GitHub Actions
-- Imagen: respaldo genérico (`cover.webp`) hasta tener captura propia
+- Imagen: captura de Claude Code usando `convertir_monto` (250 euros a quetzales), con la llamada a la herramienta expandida (`banguat-mcp.webp`, 1296×810)
 - Repositorio: https://github.com/ottooniel/banguat-mcp
 - npm: https://www.npmjs.com/package/banguat-mcp
 
@@ -171,7 +171,7 @@ Criterio: solo lo que respalda el perfil (React/JavaScript, trabajo en equipo co
 
 ## Assets
 
-Optimizados en WebP: `bg.webp`, `cover.webp`, `hs_glasses.webp`, `hero_poster.webp`, `echo_poster.webp`, `echo.webp`, `portafolio.webp`. Videos: `hero_loop.mp4` (hero) y `echo_preview.mp4` (tráiler de Echo, 720×900, sin audio, 1,1 MB).
+Optimizados en WebP: `bg.webp`, `cover.webp`, `hs_glasses.webp`, `hero_poster.webp`, `echo_poster.webp`, `echo.webp`, `portafolio.webp`, `banguat-mcp.webp`. Videos: `hero_loop.mp4` (hero) y `echo_preview.mp4` (tráiler de Echo, 720×900, sin audio, 1,1 MB).
 `cover.webp` queda solo como respaldo para un proyecto nuevo sin captura.
 Imagen para redes (`og.jpg`): 1200×630, fondo `hero_poster.webp`, "Ottoniel Menéndez" y "Full Stack Developer" en Space Grotesk, sin la palabra "Portafolio".
 Favicon: "OM" en Space Grotesk 600, color `text` sobre `bg` (`src/app/icon.svg`).
