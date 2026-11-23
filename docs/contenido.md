@@ -50,9 +50,9 @@ Regla: estos cuatro puntos tienen que ser verdad en el repo cuando el sitio se p
 
 ## Proyectos
 
-Cuatro filas, en este orden: Echo, Este portafolio, Portal 360, Portal para agentes de campo.
+Cinco filas, en este orden: Echo, banguat-mcp, Este portafolio, Portal 360, Portal para agentes de campo.
 
-Etiquetas sobre el medio: `01 / ECHO` · `02 / PORTAFOLIO` · `03 / PORTAL 360` · `04 / AGENTES DE CAMPO`.
+Etiquetas sobre el medio: `01 / ECHO` · `02 / BANGUAT-MCP` · `03 / PORTAFOLIO` · `04 / PORTAL 360` · `05 / AGENTES DE CAMPO`.
 
 ### Echo
 
@@ -65,6 +65,18 @@ Juego de supervivencia en el navegador: cada ronda graba tu recorrido y lo convi
 - Medio: tráiler del juego en bucle, sin sonido (`echo_preview.mp4`, póster `echo_poster.webp`). El tráiler confirma: index.html de 30.380 bytes y "hasta el sonido es código".
 - Jugar: https://ottooniel.github.io/echo/
 - Repositorio: https://github.com/ottooniel/echo
+
+### banguat-mcp
+
+Servidor MCP · npm y MCP Registry
+
+Servidor MCP que conecta agentes de IA como Claude y Cursor con el tipo de cambio del Banco de Guatemala: dólar del día, series históricas y conversión de montos a quetzales. Publicado en npm y en el registro oficial de MCP; se instala con `npx -y banguat-mcp`.
+
+- Arquitectura: Servidor MCP por stdio con seis herramientas · cliente SOAP del web service del Banguat con caché · conversión a quetzales de las monedas del catálogo
+- Stack: TypeScript, Node.js, MCP SDK, Zod, Vitest, GitHub Actions
+- Imagen: respaldo genérico (`cover.webp`) hasta tener captura propia
+- Repositorio: https://github.com/ottooniel/banguat-mcp
+- npm: https://www.npmjs.com/package/banguat-mcp
 
 ### Este portafolio
 

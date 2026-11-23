@@ -1,4 +1,5 @@
 import Echo, { meta as echo } from "./echo.mdx";
+import BanguatMcp, { meta as banguatMcp } from "./banguat-mcp.mdx";
 import Portafolio, { meta as portafolio } from "./portafolio.mdx";
 import Portal360, { meta as portal360 } from "./portal-360.mdx";
 import PortalCampo, { meta as portalCampo } from "./portal-campo.mdx";
@@ -29,6 +30,7 @@ export const diagramNote = "Diagrama simplificado, sin datos del cliente";
 // Orden de las filas.
 export const projects = [
   { meta: echo, Body: Echo },
+  { meta: banguatMcp, Body: BanguatMcp },
   { meta: portafolio, Body: Portafolio },
   { meta: portal360, Body: Portal360 },
   { meta: portalCampo, Body: PortalCampo },

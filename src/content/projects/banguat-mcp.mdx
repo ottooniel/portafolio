@@ -1,0 +1,20 @@
+export const meta = {
+  number: "02",
+  title: "banguat-mcp",
+  mediaLabel: "02 / BANGUAT-MCP",
+  kind: "public",
+  tag: "Servidor MCP · npm y MCP Registry",
+  media: { type: "image", src: "/cover.webp", width: 1200, height: 797 },
+  architecture: [
+    "Servidor MCP por stdio con seis herramientas",
+    "cliente SOAP del web service del Banguat con caché",
+    "conversión a quetzales de las monedas del catálogo",
+  ],
+  stack: ["TypeScript", "Node.js", "MCP SDK", "Zod", "Vitest", "GitHub Actions"],
+  links: [
+    { label: "Repositorio", href: "https://github.com/ottooniel/banguat-mcp" },
+    { label: "npm", href: "https://www.npmjs.com/package/banguat-mcp" },
+  ],
+};
+
+Servidor MCP que conecta agentes de IA como Claude y Cursor con el tipo de cambio del Banco de Guatemala: dólar del día, series históricas y conversión de montos a quetzales. Publicado en npm y en el registro oficial de MCP; se instala con `npx -y banguat-mcp`.
